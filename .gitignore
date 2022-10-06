@@ -23,3 +23,6 @@
 hs_err_pid*
 src/main/java/.DS_Store
 target/classes/.DS_Store
+
+# Temporarily ignore Logger files till end of development
+Logger-files/
