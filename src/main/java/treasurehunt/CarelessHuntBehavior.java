@@ -7,7 +7,7 @@ public class CarelessHuntBehavior extends TreasureHuntBehavior {
     // Implementation of the strategy OOP Design pattern. This is a subclass
     // of the strategy pattern.
 
-    protected static final int NEEDEDSCORE = 10;
+    protected static final int NEEDEDSCORE = 7;
     protected static final int DICESIDES = 6;
 
 
