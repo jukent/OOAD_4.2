@@ -76,7 +76,7 @@ The steps for this are in [`.github/workflows/junit_test.yml`](https://github.co
 
 ...
 
-# Java-based Line Graph
+## Java-based Line Graph
 
 ...
 

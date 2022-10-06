@@ -7,7 +7,7 @@ public class QuickHuntBehavior extends TreasureHuntBehavior {
     // Implementation of the strategy OOP Design pattern. This is a subclass
     // of the strategy pattern.
 
-    protected static final int NEEDEDSCORE = 9;
+    protected static final int NEEDEDSCORE = 6;
     protected static final int THREESIDES = 3;
     protected static final int DICESIDES = 6;
 
