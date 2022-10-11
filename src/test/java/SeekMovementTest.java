@@ -47,7 +47,7 @@ public class SeekMovementTest {
         Brawler character = new Brawler(0, dungeon);
         characterList.add(character);
 
-        Room characterRoom = dungeon.getRoom("(1-0-0)");
+        Room characterRoom = dungeon.getRoom("(2-0-0)");
         character.setLocation(characterRoom);
 
         Assert.assertEquals(character.getLocation(), characterRoom);
@@ -56,7 +56,7 @@ public class SeekMovementTest {
         Seeker seeker = new Seeker(1, dungeon);
         creatureList.add(seeker);
 
-        Room oldRoom = dungeon.getRoom("(1-1-0)");
+        Room oldRoom = dungeon.getRoom("(2-1-0)");
         seeker.setLocation(oldRoom);
 
         Assert.assertEquals(seeker.getLocation(), oldRoom);

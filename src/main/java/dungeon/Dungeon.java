@@ -2,7 +2,7 @@ package dungeon;
 
 import java.util.Hashtable;
 
-public class Dungeon {
+public final class Dungeon {
 
     protected static final int NUMLEVELS = 4; // The number of levels
     private Hashtable<String, Room> map; // The map of this dungeon -
