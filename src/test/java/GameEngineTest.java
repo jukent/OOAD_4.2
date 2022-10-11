@@ -1,17 +1,15 @@
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import dungeon.Dungeon;
 import game.Tracker;
 import game.GameEngine;
+import entity.Creature;
+import entity.Character;
 
 public class GameEngineTest {
-
-    private GameEngine gameEngine = new GameEngine("ShowNone");
-    private Boolean endCondition = true;
-
-    private Dungeon dungeon = new Dungeon();
-    private Tracker tracker = Tracker.getInstance();
 
     protected static final int CHARNUMBER = 4;
     protected static final int CREATNUMBER = 12;
@@ -20,7 +18,13 @@ public class GameEngineTest {
 
     @Test
     public void testPopulateEntities() {
-        gameEngine.populateEntities(this.dungeon, this.tracker);
+        GameEngine gameEngine = new GameEngine("ShowNone");
+    
+        Dungeon dungeon = new Dungeon();
+        Tracker tracker = Tracker.getInstance();
+        Tracker.clear();
+
+        gameEngine.populateEntities(dungeon, tracker);
 
         Assert.assertEquals(CHARNUMBER, tracker.getCharacterList().size());
         Assert.assertEquals(CREATNUMBER, tracker.getCreatureList().size());
@@ -30,15 +34,25 @@ public class GameEngineTest {
 
     @Test
     public void testEndConditionAllTreasureFound() {
+        GameEngine gameEngine = new GameEngine("ShowNone");
+        Boolean endCondition = true;
+    
+        Dungeon dungeon = new Dungeon();
+        Tracker tracker = Tracker.getInstance();
+        Tracker.clear();
+
+        gameEngine.populateEntities(dungeon, tracker);
         Assert.assertTrue(endCondition);
 
         tracker.setTreasureCount(TREASURENUMBER);
 
         if (tracker.getTreasureCount() == TREASURENUMBER) {
             endCondition = false;
-        } else if (tracker.getCreatureList().size() == 0) {
+        } 
+        if (tracker.getCreatureList().size() == 0) {
             endCondition = true;
-        } else if (tracker.getCharacterList().size() == 0) {
+        }
+        if (tracker.getCharacterList().size() == 0) {
             endCondition = true;
         }
         Assert.assertFalse(endCondition);
@@ -47,36 +61,62 @@ public class GameEngineTest {
 
     @Test
     public void testEndConditionAllCreaturesDefeated() {
-        Assert.assertTrue(endCondition);
-        gameEngine.populateEntities(dungeon, tracker);
+        GameEngine gameEngine = new GameEngine("ShowNone");
+        Boolean endCondition = true;
+    
+        Dungeon dungeon = new Dungeon();
+        Tracker tracker = Tracker.getInstance();
+        Tracker.clear();
 
-        tracker.getCreatureList().removeAll(tracker.getCreatureList());
+        gameEngine.populateEntities(dungeon, tracker);
+        Assert.assertTrue(endCondition);
+
+        ArrayList<Creature> creatureList = new ArrayList<Creature>();
+        Tracker.setCreatureList(creatureList);
 
         if (tracker.getTreasureCount() == 24) {
             endCondition = true;
-        } else if (tracker.getCreatureList().size() == 0) {
+        }
+        if (tracker.getCreatureList().size() <= 0) {
             endCondition = false;
-        } else if (tracker.getCharacterList().size() == 0) {
+        }
+        if (tracker.getCharacterList().size() <= 0) {
             endCondition = true;
         }
+        Assert.assertEquals(TREASURENUMBER, tracker.getTreasureList().size());
+        Assert.assertEquals(0, tracker.getCreatureList().size());
+        Assert.assertEquals(CHARNUMBER, tracker.getCharacterList().size());
         Assert.assertFalse(endCondition);
     }
 
 
     @Test
     public void testEndConditionAllCharactersDefeated() {
-        Assert.assertTrue(endCondition);
-        gameEngine.populateEntities(dungeon, tracker);
+        GameEngine gameEngine = new GameEngine("ShowNone");
+        Boolean endCondition = true;
+    
+        Dungeon dungeon = new Dungeon();
+        Tracker tracker = Tracker.getInstance();
+        Tracker.clear();
 
-        tracker.getCharacterList().removeAll(tracker.getCharacterList());
+        gameEngine.populateEntities(dungeon, tracker);
+        Assert.assertTrue(endCondition);
+
+        ArrayList<Character> characterList = new ArrayList<Character>();
+        Tracker.setCharacterList(characterList);
 
         if (tracker.getTreasureCount() == 24) {
             endCondition = true;
-        } else if (tracker.getCreatureList().size() == 0) {
+        }
+        if (tracker.getCreatureList().size() == 0) {
             endCondition = true;
-        } else if (tracker.getCharacterList().size() == 0) {
+        }
+        if (tracker.getCharacterList().size() == 0) {
             endCondition = false;
         }
+        Assert.assertEquals(TREASURENUMBER, tracker.getTreasureList().size());
+        Assert.assertEquals(CREATNUMBER, tracker.getCreatureList().size());
+        Assert.assertEquals(0, tracker.getCharacterList().size());
         Assert.assertFalse(endCondition);
     }
 }

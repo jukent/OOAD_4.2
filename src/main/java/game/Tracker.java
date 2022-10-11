@@ -34,7 +34,7 @@ import treasure.Treasure;
 // In languages with first-class functions, and especially ones with closures,
 // this is a much more common way to do observers.""
 
-public class Tracker {
+public final class Tracker {
 
     private static ArrayList<Character> characterList; // An ArrayList of
     // active Characters
@@ -61,7 +61,7 @@ public class Tracker {
         //  roll from most recent treasure hunt.
 
     // Create a single object for eager Singleton pattern
-    private static final Tracker instance = new Tracker();
+    private static Tracker instance = new Tracker();
 
 
     /**
@@ -75,7 +75,7 @@ public class Tracker {
 
     /**
      * @return Tracker
-     * 
+     *
      * Gets the only Tracker.
      * Eager Singleton.
      */
@@ -217,7 +217,7 @@ public class Tracker {
      * and publishes starting Room occupancy.
      */
     public void setCharacterStats(final ArrayList<Character> characterList) {
-        Tracker.characterList = characterList;
+        setCharacterList(characterList);
         // Publish Character occupancy to rooms
         for (Character c: characterList) {
             Room room = c.getLocation();
@@ -233,7 +233,7 @@ public class Tracker {
      * and publishes starting Room occupancy.
      */
     public void setCreatureStats(final ArrayList<Creature> creatureList) {
-        Tracker.creatureList = creatureList;
+        setCreatureList(creatureList);
         // Publish Creature occupancy to rooms
         for (Creature c: creatureList) {
             Room room = c.getLocation();
@@ -249,7 +249,7 @@ public class Tracker {
      * and publishes starting Room occupancy.
      */
     public void setTreasureStats(final ArrayList<Treasure> treasureList) {
-        Tracker.treasureList = treasureList;
+        setTreasureList(treasureList);
         // Publish Treasure occupancy to rooms
         for (Treasure t: treasureList) {
             Room room = t.getLocation();
@@ -510,5 +510,49 @@ public class Tracker {
      */
     public HashMap<String, String> getTreasureHuntValues() {
         return this.treasureHuntValues;
+    }
+
+
+    /**
+     * @param creatureList ArrayList<Creature>
+     *
+     * Sets the Tracker creature list.
+     */
+    public static void setCreatureList(ArrayList<Creature> creatureList) {
+        Tracker.creatureList = creatureList;
+    }
+
+
+    /**
+     * @return ArrayList<Character>
+     *
+     * Gets the Character List.
+     */
+    public ArrayList<Character> getCharcterList() {
+        return Tracker.characterList;
+    }
+
+
+    /**
+     * @param characterList ArrayList<Character>
+     *
+     * Sets the Character List.
+     */
+    public static void setCharacterList(ArrayList<Character> characterList) {
+        Tracker.characterList = characterList;
+    }
+
+    private static void setTreasureList(ArrayList<Treasure> treasureList) {
+        Tracker.treasureList = treasureList;
+    }
+
+
+    /**
+     * Clears the Tracker lists for testing purposes.
+     */
+    public static void clear() {
+        setCharacterList(new ArrayList<Character>());
+        setCreatureList(new ArrayList<Creature>());
+        setTreasureList(new ArrayList<Treasure>());
     }
 }

@@ -16,7 +16,7 @@ import entity.Character;
 // Logged values are stored/managed/updated by the Tracker
 // whenever a relevant event is published.
 
-public class Logger {
+public final class Logger {
 
     private static Tracker tracker; // The Game Tracker
     private static String outputType; // String output options
@@ -33,7 +33,7 @@ public class Logger {
      * Making constructor private so that this class cannot be
      * instantiated.
      */
-    private Logger() {}
+    private Logger() { }
 
 
     /**
@@ -59,7 +59,7 @@ public class Logger {
      * Necessary for Singleton Pattern becasue Logger cannot have parameters,
      * but we want to pass certain information into it.
      */
-    public static void initializeLogger(Tracker tracker, String outputType) {
+    public static final void initializeLogger(final Tracker tracker, String outputType) {
         Logger.tracker = tracker; // The Game Tracker
         Logger.outputType = outputType; // Output options:
         // OneScreen, ShowAll, ShowEnding, ShowNone)
