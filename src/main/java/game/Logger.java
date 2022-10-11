@@ -59,10 +59,11 @@ public final class Logger {
      * Necessary for Singleton Pattern becasue Logger cannot have parameters,
      * but we want to pass certain information into it.
      */
-    public static final void initializeLogger(final Tracker tracker, String outputType) {
-        Logger.tracker = tracker; // The Game Tracker
-        Logger.outputType = outputType; // Output options:
-        // OneScreen, ShowAll, ShowEnding, ShowNone)
+    public static void initializeLogger(final Tracker tracker,
+        final String outputType) {
+            Logger.tracker = tracker; // The Game Tracker
+            Logger.outputType = outputType; // Output options:
+            // OneScreen, ShowAll, ShowEnding, ShowNone)
     }
 
 

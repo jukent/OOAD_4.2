@@ -19,7 +19,7 @@ public class GameEngineTest {
     @Test
     public void testPopulateEntities() {
         GameEngine gameEngine = new GameEngine("ShowNone");
-    
+
         Dungeon dungeon = new Dungeon();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
@@ -36,7 +36,7 @@ public class GameEngineTest {
     public void testEndConditionAllTreasureFound() {
         GameEngine gameEngine = new GameEngine("ShowNone");
         Boolean endCondition = true;
-    
+
         Dungeon dungeon = new Dungeon();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
@@ -48,7 +48,7 @@ public class GameEngineTest {
 
         if (tracker.getTreasureCount() == TREASURENUMBER) {
             endCondition = false;
-        } 
+        }
         if (tracker.getCreatureList().size() == 0) {
             endCondition = true;
         }
@@ -63,7 +63,7 @@ public class GameEngineTest {
     public void testEndConditionAllCreaturesDefeated() {
         GameEngine gameEngine = new GameEngine("ShowNone");
         Boolean endCondition = true;
-    
+
         Dungeon dungeon = new Dungeon();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
@@ -94,7 +94,7 @@ public class GameEngineTest {
     public void testEndConditionAllCharactersDefeated() {
         GameEngine gameEngine = new GameEngine("ShowNone");
         Boolean endCondition = true;
-    
+
         Dungeon dungeon = new Dungeon();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();

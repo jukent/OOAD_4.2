@@ -518,7 +518,7 @@ public final class Tracker {
      *
      * Sets the Tracker creature list.
      */
-    public static void setCreatureList(ArrayList<Creature> creatureList) {
+    public static void setCreatureList(final ArrayList<Creature> creatureList) {
         Tracker.creatureList = creatureList;
     }
 
@@ -538,11 +538,17 @@ public final class Tracker {
      *
      * Sets the Character List.
      */
-    public static void setCharacterList(ArrayList<Character> characterList) {
+    public static void setCharacterList(final ArrayList<Character> characterList) {
         Tracker.characterList = characterList;
     }
 
-    private static void setTreasureList(ArrayList<Treasure> treasureList) {
+
+    /**
+     * @param treasureList ArrayList<Treasure>
+     *
+     * Sets teh Treasure List.ß
+     */
+    private static void setTreasureList(final ArrayList<Treasure> treasureList) {
         Tracker.treasureList = treasureList;
     }
 
