@@ -1,12 +1,7 @@
-import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import dungeon.Dungeon;
-import entity.Character;
-import entity.*;
-import treasure.*;
 import game.Tracker;
 import game.GameEngine;
 
@@ -16,11 +11,7 @@ public class GameEngineTest {
     private Boolean endCondition = true;
 
     private Dungeon dungeon = new Dungeon();
-    private ArrayList<Character> characterList = new ArrayList<Character>();
-    private ArrayList<Creature> creatureList = new ArrayList<Creature>();
-    private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
-    private Tracker tracker =
-        new Tracker(characterList, creatureList, treasureList);
+    private Tracker tracker = Tracker.getInstance();
 
     protected static final int CHARNUMBER = 4;
     protected static final int CREATNUMBER = 12;

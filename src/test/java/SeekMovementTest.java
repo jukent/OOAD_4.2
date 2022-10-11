@@ -27,8 +27,7 @@ public class SeekMovementTest {
 
         Assert.assertEquals(seeker.getLocation(), oldRoom);
 
-        Tracker tracker
-            = new Tracker(null, creatureList, null);
+        Tracker tracker = Tracker.getInstance();
         tracker.setCreatureStats(creatureList);
 
         Assert.assertEquals("Seek", seeker.getMovementType());
@@ -68,8 +67,7 @@ public class SeekMovementTest {
         ArrayList<String> exits = oldRoom.getExits();
         Assert.assertTrue(exits.contains(characterRoom.getName()));
 
-        Tracker tracker
-            = new Tracker(characterList, creatureList, null);
+        Tracker tracker = Tracker.getInstance();
         tracker.setCharacterStats(characterList);
         tracker.setCreatureStats(creatureList);
 

@@ -18,23 +18,51 @@ import entity.Character;
 
 public class Logger {
 
-    private Tracker tracker; // The Game Tracker
-    private String outputType; // String output options
+    private static Tracker tracker; // The Game Tracker
+    private static String outputType; // String output options
 
     protected static final int MAXHEALTH = 3;
+
+    // Create a single object for lazy Singleton pattern
+    private static Logger instance;
+
+
+    /**
+     * Constructor for the turn Logger.
+     *
+     * Making constructor private so that this class cannot be
+     * instantiated.
+     */
+    private Logger() {}
+
+
+    /**
+     * @return Logger
+     *
+     * Gets the only Logger.
+     * Lazy Singleton.
+     */
+    public static Logger getInstance() {
+        if (instance == null) {
+            instance = new Logger();
+        }
+        return instance;
+    }
 
 
     /**
      * @param tracker Tracker
      * @param outputType String
      *
-     * Constructor for the turn Logger.
+     * Initializes the Logger with the GameTracker and the output type String.
+     *
+     * Necessary for Singleton Pattern becasue Logger cannot have parameters,
+     * but we want to pass certain information into it.
      */
-    public Logger(final Tracker tracker, final String outputType) {
-        this.tracker = tracker; // The Game Tracker
-        this.outputType =
-            outputType; // Output options:
-            // OneScreen, ShowAll, ShowEnding, ShowNone
+    public static void initializeLogger(Tracker tracker, String outputType) {
+        Logger.tracker = tracker; // The Game Tracker
+        Logger.outputType = outputType; // Output options:
+        // OneScreen, ShowAll, ShowEnding, ShowNone)
     }
 
 

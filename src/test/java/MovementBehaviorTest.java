@@ -35,8 +35,7 @@ public class MovementBehaviorTest {
         Assert.assertEquals(seeker.getLocation(), oldRoom);
         Assert.assertEquals(oldRoom, characterRoom);
 
-        Tracker tracker
-            = new Tracker(characterList, creatureList, null);
+        Tracker tracker = Tracker.getInstance();
         tracker.setCharacterStats(characterList);
         tracker.setCreatureStats(creatureList);
 

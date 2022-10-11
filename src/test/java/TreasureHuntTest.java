@@ -16,10 +16,8 @@ public class TreasureHuntTest {
 
     private Dungeon dungeon = new Dungeon();
     private ArrayList<Character> characterList = new ArrayList<Character>();
-    private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
-    private Tracker tracker
-        = new Tracker(characterList, creatureList, treasureList);
+    private Tracker tracker = Tracker.getInstance();
 
 
     @Test
@@ -81,6 +79,7 @@ public class TreasureHuntTest {
         Trap treasure2 = new Trap(2, dungeon);
         treasure2.setLocation(room);
         treasureList.add(treasure2);
+        tracker.setTreasureStats(treasureList);
 
         if (character.getInventoryTypes().
             contains(treasure2.getTreasureType())) {

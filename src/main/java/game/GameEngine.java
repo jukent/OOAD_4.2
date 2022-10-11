@@ -28,9 +28,7 @@ public class GameEngine {
     private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
 
-    private final Tracker tracker
-        = new Tracker(characterList, creatureList, treasureList);
-    // Game Tracker
+    private final Tracker tracker = Tracker.getInstance(); // Game Tracker
     // Using the Tracker is an example of the Observer pattern.
     // Events are published to the Tracker (pointed out in comments)
     // And then the Tracker let's any interested parties know about the events.
@@ -265,7 +263,8 @@ public class GameEngine {
      * Processes the turns for each Character and for each Creature.
      */
     private void processTurn() {
-        Logger logger = new Logger(tracker, output);
+        Logger logger = Logger.getInstance(); // tracker, output);
+        Logger.initializeLogger(tracker, output);
         // Process Characters
         printer.printDungeon();
         for (int i = 0; i < characterList.size(); i++) {
