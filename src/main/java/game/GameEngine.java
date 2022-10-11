@@ -14,7 +14,8 @@ public class GameEngine {
 
     private String output; // OneScreen,ShowAll,ShowNone
 
-    private final Dungeon dungeon = Dungeon.getInstance(); // Example of identity
+    private final Dungeon dungeon = Dungeon.getInstance();
+    // Example of identity
     // Dungeon is an example of identity. While we could create an instance
     // of dungeon in each character, by having the same instance of dungeon
     // passed to the characters, we can assure that each character
