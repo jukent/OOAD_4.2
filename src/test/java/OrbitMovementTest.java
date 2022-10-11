@@ -7,7 +7,7 @@ import entity.Orbiter;
 
 public class OrbitMovementTest {
 
-    private Dungeon dungeon = new Dungeon();
+    private Dungeon dungeon = Dungeon.getInstance();
 
 
     @Test

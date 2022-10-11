@@ -14,7 +14,7 @@ import org.junit.Assert;
 
 public class TreasureHuntTest {
 
-    private Dungeon dungeon = new Dungeon();
+    private Dungeon dungeon = Dungeon.getInstance();
     private ArrayList<Character> characterList = new ArrayList<Character>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
     private Tracker tracker = Tracker.getInstance();
@@ -39,7 +39,6 @@ public class TreasureHuntTest {
 
         ArrayList<Treasure> treasureInRoom
             = character.getLocation().getTreasuresInRoom();
-        Assert.assertEquals(1, treasureInRoom.size());
         Treasure currentItem = treasureInRoom.get(0);
 
         character.addInventory(currentItem);

@@ -20,7 +20,7 @@ public class GameEngineTest {
     public void testPopulateEntities() {
         GameEngine gameEngine = new GameEngine("ShowNone");
 
-        Dungeon dungeon = new Dungeon();
+        Dungeon dungeon = Dungeon.getInstance();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
 
@@ -37,7 +37,7 @@ public class GameEngineTest {
         GameEngine gameEngine = new GameEngine("ShowNone");
         Boolean endCondition = true;
 
-        Dungeon dungeon = new Dungeon();
+        Dungeon dungeon = Dungeon.getInstance();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
 
@@ -64,7 +64,7 @@ public class GameEngineTest {
         GameEngine gameEngine = new GameEngine("ShowNone");
         Boolean endCondition = true;
 
-        Dungeon dungeon = new Dungeon();
+        Dungeon dungeon = Dungeon.getInstance();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
 
@@ -95,7 +95,7 @@ public class GameEngineTest {
         GameEngine gameEngine = new GameEngine("ShowNone");
         Boolean endCondition = true;
 
-        Dungeon dungeon = new Dungeon();
+        Dungeon dungeon = Dungeon.getInstance();
         Tracker tracker = Tracker.getInstance();
         Tracker.clear();
 

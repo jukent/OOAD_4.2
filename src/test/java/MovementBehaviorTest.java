@@ -12,7 +12,7 @@ import game.Tracker;
 
 public class MovementBehaviorTest {
 
-    private Dungeon dungeon = new Dungeon();
+    private Dungeon dungeon = Dungeon.getInstance();
 
 
     @Test
