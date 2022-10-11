@@ -538,8 +538,9 @@ public final class Tracker {
      *
      * Sets the Character List.
      */
-    public static void setCharacterList(final ArrayList<Character> characterList) {
-        Tracker.characterList = characterList;
+    public static void setCharacterList(
+        final ArrayList<Character> characterList) {
+            Tracker.characterList = characterList;
     }
 
 
@@ -548,8 +549,9 @@ public final class Tracker {
      *
      * Sets teh Treasure List.ß
      */
-    private static void setTreasureList(final ArrayList<Treasure> treasureList) {
-        Tracker.treasureList = treasureList;
+    private static void setTreasureList(
+        final ArrayList<Treasure> treasureList) {
+            Tracker.treasureList = treasureList;
     }
 
 
