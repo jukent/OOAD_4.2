@@ -28,11 +28,8 @@ public class QuickHuntBehavior extends TreasureHuntBehavior {
      */
     @Override
     public int searchTreasure() {
-        if (DiceRolls.rollDice(THREESIDES) == 1) {
-            return -1;
-        } else {
             return DiceRolls.rollDice(DICESIDES)
             + DiceRolls.rollDice(DICESIDES);
-        }
+        
     }
 }
