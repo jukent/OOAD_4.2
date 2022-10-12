@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.io.File;
 import java.io.FileReader;
@@ -10,7 +11,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.knowm.xchart.*;
 import org.knowm.xchart.BitmapEncoder.BitmapFormat;
-import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
 public class Plotter {
@@ -31,11 +31,12 @@ public class Plotter {
     private HashMap<String, ArrayList<Integer>> readLoggerFiles() {
         ArrayList<Integer> rounds = new ArrayList<Integer>();
         ArrayList<Integer> numCreatures = new ArrayList<Integer>();
-        //ArrayList<Integer> numTreasuresFound = new ArrayList<Integer>();
+        ArrayList<Integer> numTreasuresFound = new ArrayList<Integer>();
         //ArrayList<Integer> characterDamages = new ArrayList<Integer>();
 
         File dir = new File("Logger-files");
         File[] loggerFiles = dir.listFiles();
+        Arrays.sort(loggerFiles);
         for (File loggerFile : loggerFiles) {
             JSONParser parser = new JSONParser();
             try {
@@ -45,14 +46,13 @@ public class Plotter {
                 rounds.add(Integer.parseInt(roundStr));
 
                 JSONObject jsonCreatures = (JSONObject)jsonObject.get("Creatures");
-                System.out.println(jsonCreatures);
                 String remainingStr = String.valueOf(jsonCreatures.get("Remaining"));
                 numCreatures.add(Integer.parseInt(remainingStr));
 
-                //JSONObject jsonCharacter = (JSONObject)jsonObject.get("Character");
-                //ArrayList<Object> treasureFound =
-                //    (ArrayList<Object>)jsonCharacter.get("Treasure");
-                //numTreasuresFound.add(treasureFound.size());
+                JSONObject jsonCharacter = (JSONObject)jsonObject.get("Character");
+                ArrayList<Object> treasureFound =
+                    (ArrayList<Object>)jsonCharacter.get("Treasure");
+                numTreasuresFound.add(treasureFound.size());
 
                 //String damageStr = (String)jsonCharacter.get("Damage");
                 //characterDamages.add(Integer.parseInt(damageStr));
@@ -63,7 +63,7 @@ public class Plotter {
         HashMap<String, ArrayList<Integer>> lineGraphData = new HashMap<String, ArrayList<Integer>>();
         lineGraphData.put("rounds", rounds);
         lineGraphData.put("numCreatures", numCreatures);
-        //lineGraphData.put("numTreasuresFound", numTreasuresFound);
+        lineGraphData.put("numTreasuresFound", numTreasuresFound);
         //lineGraphData.put("characterDamages", characterDamages);
 
         return lineGraphData;
@@ -95,8 +95,8 @@ public class Plotter {
         ArrayList<Integer> xData = lineGraphData.get("rounds");
         chart.addSeries("Creatures Remaining", xData,
             lineGraphData.get("numCreatures"));
-        //chart.addSeries("Treasures Found", xData,
-        //    lineGraphData.get("numTreasuresFound"));
+        chart.addSeries("Treasures Found", xData,
+            lineGraphData.get("numTreasuresFound"));
         //chart.addSeries("Adventurer Damage", xData,
         //    lineGraphData.get("characterDamages"));
 

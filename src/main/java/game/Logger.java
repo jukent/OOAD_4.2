@@ -51,7 +51,8 @@ public class Logger {
      * name, location, damage, and treasures.
      */
     private HashMap<String, Object> getCharacterDict() {
-        Character character = tracker.getCharacterList().get(0); // Later this won't be from a list because ther is just one character
+        Character character = tracker.getCharacterList().get(0);
+        // Later this won't be from a list because ther is just one character
         HashMap<String,Object> characterDict = new HashMap<String,Object>();
         characterDict.put("Name", character.getName());
         characterDict.put("Type", character.getClass().getSimpleName());
@@ -108,8 +109,9 @@ public class Logger {
 
             JSONObject jsonLog = new JSONObject(logDict);
             try {
+                String roundCountPadded = String.format("%03d", roundCount);
                 String fileName
-                    = new String("Logger-files/Logger-" + roundCount + ".json");
+                    = new String("Logger-files/Logger-" + roundCountPadded + ".json");
                 FileWriter fileWriter = new FileWriter(fileName);
                 fileWriter.write(jsonLog.toJSONString());
                 fileWriter.close();
