@@ -2,8 +2,13 @@ package game;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.simple.JSONObject;
 
 import entity.Creature;
+import treasure.Treasure;
 import entity.Character;
 
 
@@ -40,92 +45,73 @@ public class Logger {
 
 
     /**
-     * @param fileWriter FileWriter
+     * @return HashMap<String, Object> 
      *
-     * This method logs Character stats: name, location, damage, and treausres.
+     * This method returns a HashMap of Character
+     * name, location, damage, and treasures.
      */
-    private void logCharacterStats(final FileWriter fileWriter) {
-        String tableHeader = new String("Adventurers\tRoom\tDamage\tTreasure");
-        try {
-            fileWriter.write("\n");
-            fileWriter.write(tableHeader);
-
-            fileWriter.write("\n");
-
-            for (Character c: tracker.getCharacterList()) {
-                String name = c.getName();
-                String location = c.getLocation().getName();
-                Integer damage = MAXHEALTH - c.getHealth();
-                String treasure = c.getInventoryString();
-
-                String characterStats =
-                    new String(name + "\t\t" + location + "\t"
-                    + damage + "\t\t" + treasure);
-                fileWriter.write(characterStats);
-                fileWriter.write("\n");
-            }
-        } catch (IOException e) {
-            System.out.
-                println("An error occurred. Could not write Character stats.");
-            e.printStackTrace();
+    private HashMap<String, Object> getCharacterDict() {
+        Character character = tracker.getCharacterList().get(0); // Later this won't be from a list because ther is just one character
+        HashMap<String,Object> characterDict = new HashMap<String,Object>();
+        characterDict.put("Name", character.getName());
+        characterDict.put("Type", character.getClass().getSimpleName());
+        characterDict.put("Location", character.getLocation().getName());
+        characterDict.put("Health", character.getHealth());
+        ArrayList<Treasure> treasureObjs = character.getInventory();
+        ArrayList<String> treasureStrs = new ArrayList<String>();
+        for (Treasure t: treasureObjs) {
+            treasureStrs.add(t.getTreasureType());
         }
+        characterDict.put("Treasure", treasureStrs);
+        return characterDict;
     }
 
 
     /**
-     * @param fileWriter FileWriter
+     * @return HashMap<String, Object>
      *
-     * This method logs Creature stats: name and location.
+     * This method returns a Hashmap of Creature stats:
+     * name and location.
      */
-    private void logCreatureStats(final FileWriter fileWriter) {
-        try {
-            fileWriter.write("\n");
-            int totalCreatures = tracker.getCreatureList().size();
-            fileWriter.write("Total Active Creatures: " + totalCreatures);
-            fileWriter.write("\n");
-
-            fileWriter.write("\n");
-            String tableHeader = new String("Creatures\tRoom");
-            fileWriter.write(tableHeader);
-            fileWriter.write("\n");
-
-            for (Creature c: tracker.getCreatureList()) {
-                String name = c.getName();
-                String room = c.getLocation().getName();
-                String creatureStats = new String(name + "\t\t" + room);
-                fileWriter.write(creatureStats);
-                fileWriter.write("\n");
-            }
-        } catch (IOException e) {
-            System.out.
-                println("An error occurred. Could not write Creature stats.");
-            e.printStackTrace();
+    private HashMap<String, Object> getCreatureDict() {
+        HashMap<String,Object> creatureDict = new HashMap<String,Object>();
+        creatureDict.put("Remaining", tracker.getCreatureList().size());
+        for (Creature creature: tracker.getCreatureList()) {
+            creatureDict.put(creature.getName(), creature.getLocation().getName());
         }
+        return creatureDict;
     }
 
 
     /**
      * The method logs all required components for each round
      * (Character stats and Creature stats).
+     *
+     * Changing this from the method in project 3.2 (formatted
+     * .txt file) to a .json file because the json file is easier
+     * to grab data from,
+     * which we have to do for the Java line graph.
+     *
+     * Help from TutorialsPoint "How to Write/Create a JSON File Using Java":
+     * https://www.tutorialspoint.com/how-to-write-create-a-json-file-using-java
      */
     public void logRound() {
         if (outputType != "ShowNone") {
         // Don't produce Logs for multiple game runs with "ShowNone" set
+            HashMap<String, Object> logDict = new HashMap<String,Object>();
+
             int roundCount = tracker.getRoundCount();
+            logDict.put("Turn", roundCount);
 
-            String fileName
-                = new String("Logger-files/Logger-" + roundCount + ".txt");
+            logDict.put("Character", getCharacterDict());
+            logDict.put("Creatures", getCreatureDict());
 
+            JSONObject jsonLog = new JSONObject(logDict);
             try {
+                String fileName
+                    = new String("Logger-files/Logger-" + roundCount + ".json");
                 FileWriter fileWriter = new FileWriter(fileName);
-
-                String roundString = new String("Tracker: Turn " + roundCount);
-                fileWriter.write(roundString);
-                fileWriter.write("\n");
-
-                logCharacterStats(fileWriter);
-                logCreatureStats(fileWriter);
-
+                fileWriter.write(jsonLog.toJSONString());
                 fileWriter.close();
             } catch (IOException e) {
                 System.out.println("An error occurred. Could not write file.");
