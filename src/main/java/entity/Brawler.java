@@ -21,6 +21,7 @@ public class Brawler extends Character {
         setLocation(getDungeon().getRoom("(0-1-1)")); // Begin in Entrance Room
         setFightBehavior(new ExpertFightBehavior()); // FightType is Expert
         setSearchBehavior(new CarelessHuntBehavior());
+        setHP(12);
         // SearchType is Careless
         setName("Brawler"); // String name
         setTitle(Name);

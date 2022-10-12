@@ -19,8 +19,6 @@ public class Printer {
     private final Scanner scanner
         = new java.util.Scanner(System.in); // A Scanner for awaiting user input
 
-    private static final int MAXHEALTH = 3;
-
 
     /**
      * @param dungeon Dungeon
@@ -181,7 +179,7 @@ public class Printer {
         for (Character c: tracker.getCharacterList()) {
             String name = c.getName();
             String treasureString = c.getInventoryString();
-            Integer damage = MAXHEALTH - c.getHealth();
+            Integer damage = c.getHealth();
 
             String characterStats
                 = new String(name + "\t\t" + damage + "\t" + treasureString);

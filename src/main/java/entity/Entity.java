@@ -25,7 +25,7 @@ public class Entity {
     private String direction
         = new String("clockwise"); // Dummy String direction value
     private String title = new String("");
-    private static final  int HP = 3; // Health Points Integer
+    private int HP = 3; // Health Points Integer
     private int hp = HP;
     private int moveCount = 1; // Integer movement count
 

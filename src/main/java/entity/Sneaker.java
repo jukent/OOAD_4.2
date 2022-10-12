@@ -23,5 +23,6 @@ public class Sneaker extends Character {
         setName("Sneaker"); // Sring name
         setTitle(Name);
         setType(EntityEnum.SNEAKER);
+        setHP(8);
     }
 }

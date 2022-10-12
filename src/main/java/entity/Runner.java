@@ -25,5 +25,6 @@ public class Runner extends Character {
         setName("Runner"); // String name
         setTitle(Name);
         setType(EntityEnum.RUNNER);
+        setHP(10);
     }
 }

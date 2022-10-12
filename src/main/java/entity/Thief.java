@@ -23,6 +23,7 @@ public class Thief extends Character {
         setName("Thief"); // String name
         setTitle(Name);
         setType(EntityEnum.THIEF);
+        setHP(10);
         
 
 
