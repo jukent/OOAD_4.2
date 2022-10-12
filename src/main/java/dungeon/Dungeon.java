@@ -2,7 +2,7 @@ package dungeon;
 
 import java.util.Hashtable;
 
-public class Dungeon {
+public final class Dungeon {
 
     protected static final int NUMLEVELS = 4; // The number of levels
     private Hashtable<String, Room> map; // The map of this dungeon -
@@ -13,6 +13,8 @@ public class Dungeon {
     // only the needed information to access it from the outside.
     // Any additional information is hidden in private methods.
 
+    // Create a single object for eager Singleton pattern
+    private static Dungeon instance = new Dungeon();
 
     /**
      * Constructs the Dungeon object which contains a map of all rooms
@@ -21,8 +23,19 @@ public class Dungeon {
      * so that this can be more easily extended for different Dungeon sizes.
      * Currently hardcoded to 4 for simplicity.
      */
-    public Dungeon() {
+    private Dungeon() {
         setMap(generateMap(NUMLEVELS));
+    }
+
+
+    /**
+     * @return Dungeon
+     *
+     * Gets the only Dungeon.
+     * Eager Singleton.
+     */
+    public static Dungeon getInstance() {
+        return instance;
     }
 
 

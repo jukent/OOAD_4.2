@@ -9,7 +9,7 @@ import treasure.*;
 
 
 public class TreasureBonusTest {
-    private Dungeon dungeon = new Dungeon();
+    private Dungeon dungeon = Dungeon.getInstance();
     private Character runner = new Runner(1, dungeon);
     private Treasure potion = new Potion(1, dungeon);
     private Treasure armor = new Armor(1, dungeon);

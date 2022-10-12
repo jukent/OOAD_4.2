@@ -11,7 +11,7 @@ import treasure.Portal;
 
 public class BlinkMovementTest {
 
-    private Dungeon dungeon = new Dungeon();
+    private Dungeon dungeon = Dungeon.getInstance();
 
     protected static final int MAXLEVEL = 4;
 

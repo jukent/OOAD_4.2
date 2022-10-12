@@ -8,7 +8,7 @@ import entity.Brawler;
 
 public class RandomWalkMovementTest {
 
-    private Dungeon dungeon = new Dungeon();
+    private Dungeon dungeon = Dungeon.getInstance();
 
 
     @Test

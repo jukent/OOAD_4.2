@@ -34,13 +34,13 @@ import treasure.Treasure;
 // In languages with first-class functions, and especially ones with closures,
 // this is a much more common way to do observers.""
 
-public class Tracker {
+public final class Tracker {
 
-    private ArrayList<Character> characterList; // An ArrayList of
+    private static ArrayList<Character> characterList; // An ArrayList of
     // active Characters
-    private ArrayList<Creature> creatureList; // An ArrayList of
+    private static ArrayList<Creature> creatureList; // An ArrayList of
     // active Creatures
-    private ArrayList<Treasure> treasureList; // An ArrayList of
+    private static ArrayList<Treasure> treasureList; // An ArrayList of
     // hidden Treasures
 
     private int roundCount; // Integer Round value
@@ -52,7 +52,7 @@ public class Tracker {
         = new HashMap<String, String>(); // Ordered HashMap
         // mapping Character and Creature from most recent fight
         // to their integer roll values.
-        private Celebration celebration;
+    private Celebration celebration;
 
     private String treasureHuntResult; // Result of the last trasure hunt:
     // "TreasureFound", "TreasureNotFound", or "DuplicateTreasureFound"
@@ -60,27 +60,27 @@ public class Tracker {
         = new HashMap<String, String>(); // HashMap of Treasure and Treasure
         //  roll from most recent treasure hunt.
 
+    // Create a single object for eager Singleton pattern
+    private static Tracker instance = new Tracker();
+
 
     /**
-     * @param characterList ArrayList<Character>
-     * @param creatureList ArrayList<Creature>
-     * @param treasureList ArrayList<Treasure>
-     *
      * Constructor for the Tracker.
      */
-    public Tracker(
-        final ArrayList<Character> characterList,
-        final ArrayList<Creature> creatureList,
-        final ArrayList<Treasure> treasureList) {
-            this.characterList = characterList; // An ArrayList of all
-            // active Characters
-            this.creatureList = creatureList; // An ArrayList of all
-            // active Creatures
-            this.treasureList = treasureList; // An ArrayList of all
-            // hidden Treasures
+    private Tracker() {
+        this.roundCount = 0; // Integer Round count value
+        this.treasureCount = 0; // Integer found Treasure count
+    }
 
-            this.roundCount = 0; // Integer Round count value
-            this.treasureCount = 0; // Integer found Treasure count
+
+    /**
+     * @return Tracker
+     *
+     * Gets the only Tracker.
+     * Eager Singleton.
+     */
+    public static Tracker getInstance() {
+        return instance;
     }
 
 
@@ -217,7 +217,7 @@ public class Tracker {
      * and publishes starting Room occupancy.
      */
     public void setCharacterStats(final ArrayList<Character> characterList) {
-        this.characterList = characterList;
+        setCharacterList(characterList);
         // Publish Character occupancy to rooms
         for (Character c: characterList) {
             Room room = c.getLocation();
@@ -233,7 +233,7 @@ public class Tracker {
      * and publishes starting Room occupancy.
      */
     public void setCreatureStats(final ArrayList<Creature> creatureList) {
-        this.creatureList = creatureList;
+        setCreatureList(creatureList);
         // Publish Creature occupancy to rooms
         for (Creature c: creatureList) {
             Room room = c.getLocation();
@@ -249,7 +249,7 @@ public class Tracker {
      * and publishes starting Room occupancy.
      */
     public void setTreasureStats(final ArrayList<Treasure> treasureList) {
-        this.treasureList = treasureList;
+        setTreasureList(treasureList);
         // Publish Treasure occupancy to rooms
         for (Treasure t: treasureList) {
             Room room = t.getLocation();
@@ -272,7 +272,7 @@ public class Tracker {
         final Treasure treasure,
         final Integer score) {
             setTreasureCount(getTreasureCount() + 1); // Increase counter by one
-            this.treasureList.remove(treasure); // remove from treasure list
+            Tracker.treasureList.remove(treasure); // remove from treasure list
 
             // publish to room that treasure no longer there
             Room room  = treasure.getLocation();
@@ -371,7 +371,7 @@ public class Tracker {
      * and lets Room subscriper know of new occupancy.
      */
     public void removeCharacter(final Character character) {
-        this.characterList.remove(character);
+        Tracker.characterList.remove(character);
 
         // Publish Occupancy to Rooms
         Room room = character.getLocation();
@@ -388,7 +388,7 @@ public class Tracker {
      * and lets Room subscriber know of new occupancy.
      */
     public void removeCreature(final Creature creature) {
-        this.creatureList.remove(creature);
+        Tracker.creatureList.remove(creature);
 
         // Publish Creature Occupancy to Rooms
         Room room = creature.getLocation();
@@ -440,7 +440,7 @@ public class Tracker {
      * Exposes the Tracker's Treasure List.
      */
     public ArrayList<Treasure> getTreasureList() {
-        return this.treasureList;
+        return Tracker.treasureList;
     }
 
 
@@ -510,5 +510,57 @@ public class Tracker {
      */
     public HashMap<String, String> getTreasureHuntValues() {
         return this.treasureHuntValues;
+    }
+
+
+    /**
+     * @param creatureList ArrayList<Creature>
+     *
+     * Sets the Tracker creature list.
+     */
+    public static void setCreatureList(final ArrayList<Creature> creatureList) {
+        Tracker.creatureList = creatureList;
+    }
+
+
+    /**
+     * @return ArrayList<Character>
+     *
+     * Gets the Character List.
+     */
+    public ArrayList<Character> getCharcterList() {
+        return Tracker.characterList;
+    }
+
+
+    /**
+     * @param characterList ArrayList<Character>
+     *
+     * Sets the Character List.
+     */
+    public static void setCharacterList(
+        final ArrayList<Character> characterList) {
+            Tracker.characterList = characterList;
+    }
+
+
+    /**
+     * @param treasureList ArrayList<Treasure>
+     *
+     * Sets teh Treasure List.ß
+     */
+    private static void setTreasureList(
+        final ArrayList<Treasure> treasureList) {
+            Tracker.treasureList = treasureList;
+    }
+
+
+    /**
+     * Clears the Tracker lists for testing purposes.
+     */
+    public static void clear() {
+        setCharacterList(new ArrayList<Character>());
+        setCreatureList(new ArrayList<Creature>());
+        setTreasureList(new ArrayList<Treasure>());
     }
 }
