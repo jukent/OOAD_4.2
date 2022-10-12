@@ -25,6 +25,7 @@ public class Blinker extends Creature {
         setMovementBehavior(new BlinkMovement()); // MovementType is Blink
         setName("Blinker");
         setLocation(pickStartingRoom());
+        setType(EntityEnum.BLINKER);
         //Blinkers start anywhere on the 4th level
     }
 

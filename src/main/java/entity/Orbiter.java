@@ -28,6 +28,7 @@ public class Orbiter extends Creature {
         setName("Orbiter"); // String name
         setLocation(pickStartingRoom()); // Orbiters start in any outside Room
         setDirection(pickRandomDirection()); // Clockwise or Counterclockwise
+        setType(EntityEnum.ORBITER);
     }
 
 
