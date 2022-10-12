@@ -32,16 +32,17 @@ public class Plotter {
         ArrayList<Integer> rounds = new ArrayList<Integer>();
         ArrayList<Integer> numCreatures = new ArrayList<Integer>();
         ArrayList<Integer> numTreasuresFound = new ArrayList<Integer>();
-        //ArrayList<Integer> characterDamages = new ArrayList<Integer>();
+        ArrayList<Integer> characterHealth = new ArrayList<Integer>();
 
         File dir = new File("Logger-files");
         File[] loggerFiles = dir.listFiles();
         Arrays.sort(loggerFiles);
-        for (File loggerFile : loggerFiles) {
+        for (File loggerFile: loggerFiles) {
             JSONParser parser = new JSONParser();
             try {
                 Object obj = parser.parse(new FileReader(loggerFile.toString()));
                 JSONObject jsonObject = (JSONObject)obj;
+
                 String roundStr = String.valueOf(jsonObject.get("Turn"));
                 rounds.add(Integer.parseInt(roundStr));
 
@@ -54,8 +55,8 @@ public class Plotter {
                     (ArrayList<Object>)jsonCharacter.get("Treasure");
                 numTreasuresFound.add(treasureFound.size());
 
-                //String damageStr = (String)jsonCharacter.get("Damage");
-                //characterDamages.add(Integer.parseInt(damageStr));
+                String healthStr = String.valueOf(jsonCharacter.get("Health"));
+                characterHealth.add(Integer.parseInt(healthStr));
             } catch(Exception e) {
                 e.printStackTrace();
             }
@@ -64,7 +65,7 @@ public class Plotter {
         lineGraphData.put("rounds", rounds);
         lineGraphData.put("numCreatures", numCreatures);
         lineGraphData.put("numTreasuresFound", numTreasuresFound);
-        //lineGraphData.put("characterDamages", characterDamages);
+        lineGraphData.put("characterHealth", characterHealth);
 
         return lineGraphData;
     }
@@ -97,8 +98,8 @@ public class Plotter {
             lineGraphData.get("numCreatures"));
         chart.addSeries("Treasures Found", xData,
             lineGraphData.get("numTreasuresFound"));
-        //chart.addSeries("Adventurer Damage", xData,
-        //    lineGraphData.get("characterDamages"));
+        chart.addSeries("Adventurer Health", xData,
+            lineGraphData.get("characterHealth"));
 
         // Show it
         new SwingWrapper<XYChart>(chart).displayChart();
