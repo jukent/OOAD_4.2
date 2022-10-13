@@ -8,4 +8,5 @@
         "lib/**/*.jar"
     ],
     "maven.view": "flat",
+    "java.configuration.updateBuildConfiguration": "interactive",
 }

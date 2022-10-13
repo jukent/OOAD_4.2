@@ -423,5 +423,13 @@ public class GameEngine {
         } else {
             endCondition = true;
         }
+        if (!endCondition) {
+            try {
+                Plotter plotter = new Plotter();
+                plotter.plotLineGraph();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
