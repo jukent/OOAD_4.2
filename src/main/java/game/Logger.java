@@ -45,7 +45,7 @@ public class Logger {
 
 
     /**
-     * @return HashMap<String, Object> 
+     * @return HashMap<String, Object>
      *
      * This method returns a HashMap of Character
      * name, location, damage, and treasures.
@@ -53,7 +53,7 @@ public class Logger {
     private HashMap<String, Object> getCharacterDict() {
         Character character = tracker.getCharacterList().get(0);
         // Later this won't be from a list because ther is just one character
-        HashMap<String,Object> characterDict = new HashMap<String,Object>();
+        HashMap<String, Object> characterDict = new HashMap<String, Object>();
         characterDict.put("Name", character.getName());
         characterDict.put("Type", character.getClass().getSimpleName());
         characterDict.put("Location", character.getLocation().getName());
@@ -75,10 +75,11 @@ public class Logger {
      * name and location.
      */
     private HashMap<String, Object> getCreatureDict() {
-        HashMap<String,Object> creatureDict = new HashMap<String,Object>();
+        HashMap<String, Object> creatureDict = new HashMap<String, Object>();
         creatureDict.put("Remaining", tracker.getCreatureList().size());
         for (Creature creature: tracker.getCreatureList()) {
-            creatureDict.put(creature.getName(), creature.getLocation().getName());
+            creatureDict.put(creature.getName(),
+                creature.getLocation().getName());
         }
         return creatureDict;
     }
@@ -99,7 +100,7 @@ public class Logger {
     public void logRound() {
         if (outputType != "ShowNone") {
         // Don't produce Logs for multiple game runs with "ShowNone" set
-            HashMap<String, Object> logDict = new HashMap<String,Object>();
+            HashMap<String, Object> logDict = new HashMap<String, Object>();
 
             int roundCount = tracker.getRoundCount();
             logDict.put("Turn", roundCount);
@@ -111,7 +112,8 @@ public class Logger {
             try {
                 String roundCountPadded = String.format("%03d", roundCount);
                 String fileName
-                    = new String("Logger-files/Logger-" + roundCountPadded + ".json");
+                    = new String("Logger-files/Logger-"
+                    + roundCountPadded + ".json");
                 FileWriter fileWriter = new FileWriter(fileName);
                 fileWriter.write(jsonLog.toJSONString());
                 fileWriter.close();

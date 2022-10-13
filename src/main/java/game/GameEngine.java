@@ -410,11 +410,11 @@ public class GameEngine {
         } else {
             endCondition = true;
         }
-        if (endCondition == false) {
+        if (!endCondition) {
             try {
                 Plotter plotter = new Plotter();
                 plotter.plotLineGraph();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

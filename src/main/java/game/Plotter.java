@@ -40,28 +40,32 @@ public class Plotter {
         for (File loggerFile: loggerFiles) {
             JSONParser parser = new JSONParser();
             try {
-                Object obj = parser.parse(new FileReader(loggerFile.toString()));
-                JSONObject jsonObject = (JSONObject)obj;
+                Object obj
+                    = parser.parse(new FileReader(loggerFile.toString()));
+                JSONObject jsonObject = (JSONObject) obj;
 
                 String roundStr = String.valueOf(jsonObject.get("Turn"));
                 rounds.add(Integer.parseInt(roundStr));
 
-                JSONObject jsonCreatures = (JSONObject)jsonObject.get("Creatures");
+                JSONObject jsonCreatures
+                    = (JSONObject) jsonObject.get("Creatures");
                 String remainingStr = String.valueOf(jsonCreatures.get("Remaining"));
                 numCreatures.add(Integer.parseInt(remainingStr));
 
-                JSONObject jsonCharacter = (JSONObject)jsonObject.get("Character");
+                JSONObject jsonCharacter
+                    = (JSONObject) jsonObject.get("Character");
                 ArrayList<Object> treasureFound =
-                    (ArrayList<Object>)jsonCharacter.get("Treasure");
+                    (ArrayList<Object>) jsonCharacter.get("Treasure");
                 numTreasuresFound.add(treasureFound.size());
 
                 String healthStr = String.valueOf(jsonCharacter.get("Health"));
                 characterHealth.add(Integer.parseInt(healthStr));
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        HashMap<String, ArrayList<Integer>> lineGraphData = new HashMap<String, ArrayList<Integer>>();
+        HashMap<String, ArrayList<Integer>> lineGraphData
+            = new HashMap<String, ArrayList<Integer>>();
         lineGraphData.put("rounds", rounds);
         lineGraphData.put("numCreatures", numCreatures);
         lineGraphData.put("numTreasuresFound", numTreasuresFound);
