@@ -10,14 +10,12 @@ import treasure.*;
 
 public class TreasureBonusTest {
     private Dungeon dungeon = Dungeon.getInstance();
-    private Character runner = new Runner(1, dungeon);
+    private Character runner = new Runner(1, dungeon, "");
     private Treasure potion = new Potion(1, dungeon);
     private Treasure armor = new Armor(1, dungeon);
     private Treasure gem = new Gem(1, dungeon);
     private Treasure sword = new Sword(1, dungeon);
     private Treasure trap = new Trap(1, dungeon);
-
-    protected static final int MAXHEALTH = 4;
 
 
     @Test
@@ -32,13 +30,13 @@ public class TreasureBonusTest {
     @Test
     public void testHPAddition() {
         runner.addHealth(potion.getHPBoost());
-        Assert.assertEquals(MAXHEALTH, runner.getHealth());
+        Assert.assertEquals(11, runner.getHealth());
     }
 
 
     @Test
     public void testTrap() {
         runner.loseHealth(trap.getTakeDamage());
-        Assert.assertEquals(2, runner.getHealth());
+        Assert.assertEquals(9, runner.getHealth());
     }
 }

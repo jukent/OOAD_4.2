@@ -8,6 +8,7 @@ import dungeon.Room;
 import entity.Creature;
 import entity.Character;
 import treasure.Treasure;
+import util.DiceRolls;
 
 // Example of Observer pattern.
 // This Tracker is instantiated at beginning of game and active till end.
@@ -335,7 +336,18 @@ public final class Tracker {
             if (fightResult.equals("CharacterWon")) {
                 creature.loseHealth(1);
             } else if (fightResult.equals("CreatureWon")) {
-                character.loseHealth(1);
+                if (character.getFightBehavior().getFightType()
+                    .equals("Stealth")) {
+                        int roll = DiceRolls.rollDice(2);
+                        if (roll == 1) {
+                            fightValues.put("Damage Evaded: Stealth ",
+                                String.valueOf(roll));
+                        } else {
+                            character.loseHealth(1);
+                        }
+                } else {
+                    character.loseHealth(1);
+                }
             }
     }
 

@@ -22,7 +22,7 @@ public class TreasureHuntTest {
 
     @Test
     public void treasureHuntSuccessTest() {
-        Brawler character = new Brawler(0, dungeon);
+        Brawler character = new Brawler(0, dungeon, "");
         Room room = dungeon.getRoom("(1-0-0)");
         character.setLocation(room);
         characterList.add(character);
@@ -50,7 +50,7 @@ public class TreasureHuntTest {
 
     @Test
     public void treasureHuntDuplicateSuccessTest() {
-        Brawler character = new Brawler(0, dungeon);
+        Brawler character = new Brawler(0, dungeon, "");
         Room room = dungeon.getRoom("(1-0-0)");
         character.setLocation(room);
 
@@ -68,7 +68,7 @@ public class TreasureHuntTest {
 
     @Test
     public void treasureHuntDuplicateTrap() {
-        Brawler character = new Brawler(0, dungeon);
+        Brawler character = new Brawler(0, dungeon, "");
         Room room = dungeon.getRoom("(1-0-0)");
         character.setLocation(room);
 
@@ -94,7 +94,7 @@ public class TreasureHuntTest {
 
     @Test
     public void carelessTreasureHuntTest() {
-        Brawler brawler = new Brawler(0, dungeon);
+        Brawler brawler = new Brawler(0, dungeon, "");
         Assert.assertEquals("Careless",
             brawler.getSearchBehavior().getSearchType());
     }
@@ -102,7 +102,7 @@ public class TreasureHuntTest {
 
     @Test
     public void carefulTreasureHuntTest() {
-        Thief thief = new Thief(0, dungeon);
+        Thief thief = new Thief(0, dungeon, "");
         Assert.assertEquals("Careful",
             thief.getSearchBehavior().getSearchType());
     }
@@ -110,7 +110,7 @@ public class TreasureHuntTest {
 
     @Test
     public void quickTreasureHuntTest() {
-        Runner runner = new Runner(0, dungeon);
+        Runner runner = new Runner(0, dungeon, "");
         Assert.assertEquals("Quick",
             runner.getSearchBehavior().getSearchType());
     }

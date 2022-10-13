@@ -11,17 +11,22 @@ public class Brawler extends Character {
     /**
      * @param id int
      * @param map Dungeon
+     * @param name String
      *
-     * Brawler constructor must be passed in an integer ID `id` and the Dungeon.
+     * Brawler constructor must be passed in an integer ID `id, the Dungeon,
+     * and a name.
      * Brawler is constructed with starting room.
      */
-    public Brawler(final int id, final Dungeon map) {
+    public Brawler(final int id, final Dungeon map, final String name) {
         setID(id); // Brawler ID value
         setDungeon(map); // Game Dungeon
         setLocation(getDungeon().getRoom("(0-1-1)")); // Begin in Entrance Room
         setFightBehavior(new ExpertFightBehavior()); // FightType is Expert
         setSearchBehavior(new CarelessHuntBehavior());
+        setHP(12);
         // SearchType is Careless
         setName("Brawler"); // String name
+        setTitle(name);
+        setType(EntityEnum.BRAWLER);
     }
 }

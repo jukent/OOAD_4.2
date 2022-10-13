@@ -21,9 +21,11 @@ public class Entity {
 
     private String name
         = new String("Entity"); // Simple Entity name String
+    private EntityEnum type = EntityEnum.NULL;
     private String direction
         = new String("clockwise"); // Dummy String direction value
-    private static final  int HP = 3; // Health Points Integer
+    private String title = new String("");
+    private static final int HP = 3; // Health Points Integer
     private int hp = HP;
     private int moveCount = 1; // Integer movement count
 
@@ -267,5 +269,45 @@ public class Entity {
      */
     public void setName(final String name) {
         this.name = name;
+    }
+
+
+    /**
+     * @param title String
+     *
+     * Sets an Entity's title.
+     */
+    public void setTitle(final String title) {
+        this.title = title;
+    }
+
+
+    /**
+     * @return String
+     *
+     * Returns an Entity's title.
+     */
+    public String getTitle() {
+        return this.title;
+    }
+
+
+    /**
+     * @param type EntityEnum
+     *
+     * Sets an Entity's type.
+     */
+    public void setType(final EntityEnum type) {
+        this.type = type;
+    }
+
+
+    /**
+     * @return EntityEnum
+     *
+     * Returns an Entity's type.
+     */
+    public EntityEnum getType() {
+        return this.type;
     }
 }

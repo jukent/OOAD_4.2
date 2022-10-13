@@ -25,6 +25,7 @@ public class Seeker extends Creature {
         setMovementBehavior(new SeekMovement()); // MovementType is Seek
         setName("Seeker"); // String name
         setLocation(pickStartingRoom()); // Seekers start anywhere in Dungeon
+        setType(EntityEnum.SEEKER);
     }
 
 

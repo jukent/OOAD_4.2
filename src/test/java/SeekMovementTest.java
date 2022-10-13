@@ -44,7 +44,7 @@ public class SeekMovementTest {
     public void testMove2Character() {
 
         ArrayList<Character> characterList = new ArrayList<Character>();
-        Brawler character = new Brawler(0, dungeon);
+        Brawler character = new Brawler(0, dungeon, "");
         characterList.add(character);
 
         Room characterRoom = dungeon.getRoom("(2-0-0)");

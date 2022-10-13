@@ -28,6 +28,8 @@ public class GameEngine {
     private ArrayList<Character> characterList = new ArrayList<Character>();
     private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
+    private CharacterFactory playerFactory = new CharacterFactory(dungeon);
+    private CreatureFactory enemyFactory = new CreatureFactory(dungeon);
 
     private final Tracker tracker = Tracker.getInstance(); // Game Tracker
     // Using the Tracker is an example of the Observer pattern.
@@ -84,18 +86,40 @@ public class GameEngine {
         // but the ArrayList is made of an abstract class
         // All Characters or Creatures behave as the instance
         // of their abstract class.
-
+        EntityEnum type = EntityEnum.NULL;
         int id = 0; // Object ID value
+        boolean nameVal = true;
+        String name = new String();
+        while (nameVal) {
+            System.out.println("Enter your character type "
+                + "(Brawler, Thief, Sneaker, Runner): ");
+            String stringtype = scanner.nextLine().toUpperCase();
+            System.out.println("Enter your name: ");
+            name = scanner.nextLine();
+
+            if (stringtype.equals("BRAWLER")) {
+                type = EntityEnum.BRAWLER;
+                nameVal = false;
+            }
+            if (stringtype.equals("THIEF")) {
+                type = EntityEnum.THIEF;
+                nameVal = false;
+            }
+            if (stringtype.equals("SNEAKER")) {
+                type = EntityEnum.SNEAKER;
+                nameVal = false;
+            }
+            if (stringtype.equals("RUNNER")) {
+                type = EntityEnum.RUNNER;
+                nameVal = false;
+            } else {
+                System.out.println("Try again");
+                System.out.println();
+            }
+        }
 
         // Characters
-        characterList.add(new Runner(id, dungeon));
-        id++;
-        characterList.add(new Sneaker(id, dungeon));
-        id++;
-        characterList.add(new Thief(id, dungeon));
-        id++;
-        characterList.add(new Brawler(id, dungeon));
-        id++;
+        characterList.add(playerFactory.createEntity(type, name));
         // publish initial Character stats to Tracker
         tracker.setCharacterStats(characterList);
         // Example of Observer pattern
@@ -103,14 +127,7 @@ public class GameEngine {
 
         // Creatures
         // Also an example of polymorphism
-        for (int i = 0; i < NUMEACH; i++) {
-            creatureList.add(new Seeker(id, dungeon));
-            id++;
-            creatureList.add(new Orbiter(id, dungeon));
-            id++;
-            creatureList.add(new Blinker(id, dungeon));
-            id++;
-        }
+        creatureList = enemyFactory.entitySet(4);
         // publish initial Creature stats to Tracker
         tracker.setCreatureStats(creatureList);
         // Again, example of Observer pattern.

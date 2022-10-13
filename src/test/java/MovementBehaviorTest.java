@@ -19,7 +19,7 @@ public class MovementBehaviorTest {
     public void testStayWithCharacter() {
 
         ArrayList<Character> characterList = new ArrayList<Character>();
-        Brawler character = new Brawler(0, dungeon);
+        Brawler character = new Brawler(0, dungeon, "");
         characterList.add(character);
 
         Room characterRoom = dungeon.getRoom("(1-0-0)");

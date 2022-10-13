@@ -11,15 +11,19 @@ public class Sneaker extends Character {
     /**
      * @param id int
      * @param map Dungeon
+     * @param name String
      *
-     * Construct Sneakers with an Integer ID `id` and the Dungeon
+     * Construct Sneakers with an Integer ID `id`, the Dungeon, and a name.
      */
-    public Sneaker(final int id, final Dungeon map) {
+    public Sneaker(final int id, final Dungeon map, final String name) {
         setID(id); // Sneaker ID value
         setDungeon(map); // Game Dungeon
         setLocation(getDungeon().getRoom("(0-1-1)")); // Begin in Entrance Room
         setFightBehavior(new StealthyFightBehavior()); // FightType is Stealthy
         setSearchBehavior(new QuickHuntBehavior()); // SearchType is Quick
         setName("Sneaker"); // Sring name
+        setTitle(name);
+        setType(EntityEnum.SNEAKER);
+        setHP(8);
     }
 }

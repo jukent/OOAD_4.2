@@ -11,10 +11,11 @@ public class Runner extends Character {
     /**
      * @param id int
      * @param map Dungeon
+     * @param name String
      *
-     * Constructs a runner with an Integer `id` and the Dungeon.
+     * Constructs a runner with an Integer `id`, the Dungeon, and a name.
      */
-    public Runner(final int id, final Dungeon map) {
+    public Runner(final int id, final Dungeon map, final String name) {
         setID(id); // Runner ID value
         setDungeon(map); // Game Dungeon
         setLocation(getDungeon().getRoom("(0-1-1)")); // Begin in Entrance Room
@@ -23,5 +24,8 @@ public class Runner extends Character {
         // Untrained
         setSearchBehavior(new QuickHuntBehavior()); // SearchType is Quick
         setName("Runner"); // String name
+        setTitle(name);
+        setType(EntityEnum.RUNNER);
+        setHP(10);
     }
 }
