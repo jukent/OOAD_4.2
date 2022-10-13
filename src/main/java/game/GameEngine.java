@@ -98,16 +98,20 @@ public class GameEngine {
             name = scanner.nextLine();
 
             if (stringtype.equals("BRAWLER")) {
-                type = EntityEnum.BRAWLER;nameVal = false;
+                type = EntityEnum.BRAWLER;
+                nameVal = false;
             }
             if (stringtype.equals("THIEF")) {
-                type = EntityEnum.THIEF;nameVal = false;
+                type = EntityEnum.THIEF;
+                nameVal = false;
             }
             if (stringtype.equals("SNEAKER")) {
-                type = EntityEnum.SNEAKER;nameVal = false;
+                type = EntityEnum.SNEAKER;
+                nameVal = false;
             }
             if (stringtype.equals("RUNNER")) {
-                type = EntityEnum.RUNNER; nameVal = false;
+                type = EntityEnum.RUNNER;
+                nameVal = false;
             } else {
                 System.out.println("Try again");
                 System.out.println();
