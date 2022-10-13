@@ -28,8 +28,8 @@ public class GameEngine {
     private ArrayList<Character> characterList = new ArrayList<Character>();
     private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
-    private CharacterFactory PlayerFactory = new CharacterFactory(dungeon);
-    private CreatureFactory EnemyFactory = new CreatureFactory(dungeon);
+    private CharacterFactory playerFactory = new CharacterFactory(dungeon);
+    private CreatureFactory enemyFactory = new CreatureFactory(dungeon);
 
     private final Tracker tracker = Tracker.getInstance(); // Game Tracker
     // Using the Tracker is an example of the Observer pattern.
@@ -89,22 +89,33 @@ public class GameEngine {
         EntityEnum type = EntityEnum.NULL;
         int id = 0; // Object ID value
         boolean nameVal = true;
-        String Name = new String();
-        while(nameVal){
-        System.out.println("Enter your character type (Brawler, Thief, Sneaker, Runner): ");
-        String stringtype = scanner.nextLine().toUpperCase();
-        System.out.println("Enter your name: ");
-        Name = scanner.nextLine();
+        String name = new String();
+        while (nameVal) {
+            System.out.println("Enter your character type "
+                + "(Brawler, Thief, Sneaker, Runner): ");
+            String stringtype = scanner.nextLine().toUpperCase();
+            System.out.println("Enter your name: ");
+            name = scanner.nextLine();
 
-        if(stringtype.equals("BRAWLER")){type = EntityEnum.BRAWLER;nameVal = false;}
-        if(stringtype.equals("THIEF")){type = EntityEnum.THIEF;nameVal = false;}
-        if(stringtype.equals("SNEAKER")){type = EntityEnum.SNEAKER;nameVal = false;}
-        if(stringtype.equals("RUNNER")){type = EntityEnum.RUNNER; nameVal = false;}
-        else{System.out.println("Try again");
-        System.out.println();}}
+            if (stringtype.equals("BRAWLER")) {
+                type = EntityEnum.BRAWLER;nameVal = false;
+            }
+            if (stringtype.equals("THIEF")) {
+                type = EntityEnum.THIEF;nameVal = false;
+            }
+            if (stringtype.equals("SNEAKER")) {
+                type = EntityEnum.SNEAKER;nameVal = false;
+            }
+            if (stringtype.equals("RUNNER")) {
+                type = EntityEnum.RUNNER; nameVal = false;
+            } else {
+                System.out.println("Try again");
+                System.out.println();
+            }
+        }
 
         // Characters
-        characterList.add(PlayerFactory.CreateEntity(type, Name));
+        characterList.add(playerFactory.createEntity(type, name));
         // publish initial Character stats to Tracker
         tracker.setCharacterStats(characterList);
         // Example of Observer pattern
@@ -112,7 +123,7 @@ public class GameEngine {
 
         // Creatures
         // Also an example of polymorphism
-        creatureList = EnemyFactory.EntitySet(4);
+        creatureList = enemyFactory.entitySet(4);
         // publish initial Creature stats to Tracker
         tracker.setCreatureStats(creatureList);
         // Again, example of Observer pattern.
@@ -186,7 +197,7 @@ public class GameEngine {
                     // Publish Creature won to Tracker
                     tracker.entityWon(character, creature,
                         characterRoll, creatureRoll, "CreatureWon");
-                    if(character.getHealth() <= 0) {
+                    if (character.getHealth() <= 0) {
                         // Remove dead Character, publish to Tracker
                         tracker.removeCharacter(character);
                     }

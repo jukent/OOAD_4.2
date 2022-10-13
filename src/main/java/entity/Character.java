@@ -132,10 +132,4 @@ public abstract class Character extends Entity {
     public void setSearchBehavior(final TreasureHuntBehavior searchBehavior) {
         this.searchBehavior = searchBehavior;
     }
-
-    
-
-
-
-
 }
