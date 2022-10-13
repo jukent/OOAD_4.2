@@ -14,5 +14,5 @@ public abstract class Factory {
      *
      * Abstract method for creating Entities.
      */
-    abstract public Entity createEntity(EntityEnum type, String title);
+    public abstract Entity createEntity(EntityEnum type, String title);
 }

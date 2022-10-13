@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import entity.*;
 import dungeon.*;
 
-public class CreatureFactory extends Factory{
+public class CreatureFactory extends Factory {
 
 
     /**
@@ -22,8 +22,8 @@ public class CreatureFactory extends Factory{
      * Creates the Creatures.
      */
     @Override
-    public Creature createEntity(EntityEnum type, String title){
-        switch(type){
+    public Creature createEntity(final EntityEnum type, final String title) {
+        switch (type) {
             case RUNNER:
                 this.id++;
                 return new Blinker(this.id, this.dungeonRef);
@@ -62,7 +62,7 @@ public class CreatureFactory extends Factory{
      * Creates an ArrayList of Creatures based on how many copies
      * are requested.
      */
-    public ArrayList<Creature> entitySet(int copies) {
+    public ArrayList<Creature> entitySet(final int copies) {
         ArrayList<Creature> creaturelist = new ArrayList<Creature>();
         for (int i = 0; i < copies; i++) {
             creaturelist.add(new Blinker(this.id, this.dungeonRef));
