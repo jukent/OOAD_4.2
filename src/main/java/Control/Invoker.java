@@ -3,13 +3,16 @@ import entity.*;
 import treasure.Treasure;
 import dungeon.*;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Scanner;
 
 public class Invoker {
-    Entity CharacterRef;
-    MoveCommand Move_Command;
-    FightCommand Fight_Command;
-    SearchCommand Search_Command;
-    CelebrateCommand Celebrate_Command;
+    private Entity CharacterRef;
+    private MoveCommand Move_Command;
+    private FightCommand Fight_Command;
+    private SearchCommand Search_Command;
+    private CelebrateCommand Celebrate_Command;
+    private Hashtable<Integer, Command> Remote;
 
     Invoker(Entity CharacterRef){
         this.CharacterRef = CharacterRef;
@@ -21,51 +24,65 @@ public class Invoker {
 
     public void ControlSequence(){
         int MoveCount = 0;
+        int ExitChoice = 0;
+        int PlayerChoice = 0;
         boolean RoundCompleted = false;
+        Scanner Input = new java.util.Scanner(System.in); 
+        Remote.clear();
 
-        
-        int ChoiceNum = 1;
-        Room currentRoom = this.CharacterRef.getLocation();
-        ArrayList<Creature> creaturesInRoom = currentRoom.getCreaturesInRoom();
-        ArrayList<Treasure> treasuresInRoom = currentRoom.getTreasuresInRoom();
-
-        System.out.println(this.CharacterRef.getTitle()+" options: ");
-        if(MoveCount == this.CharacterRef.getMoveCount()){
-            System.out.println(String.valueOf(ChoiceNum) + ": Move");
-            ChoiceNum += 1;
-        }
-        if(treasuresInRoom.size() > 0){
-            System.out.println(String.valueOf(ChoiceNum) + ": Search for Treasure");
-            ChoiceNum += 1;
-        }
-        if(creaturesInRoom.size() > 0){
-            System.out.println(String.valueOf(ChoiceNum) + ": Fight Monsters");
-            ChoiceNum += 1;
-        }
-        System.out.println(String.valueOf(ChoiceNum) + ": PARTY!!!!");
-        ChoiceNum += 1;
-        System.out.println(String.valueOf(ChoiceNum) + ": End Turn");
-        ChoiceNum += 1;
-
-
-            Room oldRoom = character.getLocation();
-            character.checkPortalInInventory();
-            character.move();
-            currentRoom = character.getLocation();
-            Room newRoom = character.getLocation();
-            tracker.characterMoved(character, oldRoom, newRoom);
-            if (creaturesInRoom.size() > 0) {
-                // If there are Creatures in the room, fight
-                for (int j = 0; j < creaturesInRoom.size(); j++) {
-                    Creature creature = creaturesInRoom.get(j);
-                    simulateFight(character, creature);
-                }
-                continue;
-            } else {
-                // If there are no Creatures in the room, look for treasure
-                simulateTreasureHunt(character);
+        while(!RoundCompleted){
+            int ChoiceNum = 1;
+            int MoveChoice = 0;
+            Room currentRoom = this.CharacterRef.getLocation();
+            ArrayList<Creature> creaturesInRoom = currentRoom.getCreaturesInRoom();
+            ArrayList<Treasure> treasuresInRoom = currentRoom.getTreasuresInRoom();
+    
+            System.out.println(this.CharacterRef.getTitle()+" options: ");
+            if(MoveCount == this.CharacterRef.getMoveCount()){
+                System.out.println(String.valueOf(ChoiceNum) + ": Move");
+                Remote.put(ChoiceNum,Move_Command);
+                MoveChoice = ChoiceNum;
+                ChoiceNum += 1;
             }
+            if(treasuresInRoom.size() > 0){
+                System.out.println(String.valueOf(ChoiceNum) + ": Search for Treasure");
+                Remote.put(ChoiceNum,Search_Command);
+                ChoiceNum += 1;
+            }
+            if(creaturesInRoom.size() > 0){
+                System.out.println(String.valueOf(ChoiceNum) + ": Fight Monsters");
+                Remote.put(ChoiceNum,Fight_Command);
+                ChoiceNum += 1;
+            }
+            System.out.println(String.valueOf(ChoiceNum) + ": PARTY!!!!");
+            Remote.put(ChoiceNum,Celebrate_Command);
+            ChoiceNum += 1;
+    
+            System.out.println(String.valueOf(ChoiceNum) + ": End Turn");
+            RoundCompleted = true;
+            ExitChoice = ChoiceNum;
+            ChoiceNum += 1;
+
+            System.out.print("Your choice: ");
+            PlayerChoice = Integer.valueOf(Input.nextLine());
+
+
+
+
+            if(PlayerChoice == ExitChoice){
+                RoundCompleted = true;
+            }
+            else if (Remote.containsKey(PlayerChoice)){
+                Remote.get(PlayerChoice).execute();
+                if(ChoiceNum==MoveChoice){MoveCount += 1;}
+            }
+            else{
+                System.out.println("Try again");
+            }
+        
+
         }
+        Input.close();
 
 
         
