@@ -186,7 +186,7 @@ public class GameEngine {
                     // Publish Creature won to Tracker
                     tracker.entityWon(character, creature,
                         characterRoll, creatureRoll, "CreatureWon");
-                    if (character.getHealth() <= 0) {
+                    if(character.getHealth() <= 0) {
                         // Remove dead Character, publish to Tracker
                         tracker.removeCharacter(character);
                     }
