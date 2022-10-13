@@ -49,7 +49,8 @@ public class Plotter {
 
                 JSONObject jsonCreatures
                     = (JSONObject) jsonObject.get("Creatures");
-                String remainingStr = String.valueOf(jsonCreatures.get("Remaining"));
+                String remainingStr
+                    = String.valueOf(jsonCreatures.get("Remaining"));
                 numCreatures.add(Integer.parseInt(remainingStr));
 
                 JSONObject jsonCharacter
