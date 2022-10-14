@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-import movement.BlinkMovement;
+import celebration.*;
 import treasure.Treasure;
 import treasurehunt.TreasureHuntBehavior;
 
@@ -14,9 +14,23 @@ public abstract class Character extends Entity {
     private ArrayList<String> inventoryTypes
         = new ArrayList<String>(); // ArrayList of Treasure inventory types
         // (Strings)
+    private Celebration celebrationBehavior;
 
 
     /**
+     * Constructor for a Character.
+     */
+    Character() {
+        celebrationBehavior = new SpinCelebration(this.getFightBehavior());
+        celebrationBehavior = new DanceCelebration(celebrationBehavior);
+        celebrationBehavior = new JumpCelebration(celebrationBehavior);
+        celebrationBehavior = new ShoutCelebration(celebrationBehavior);
+    }
+
+
+    /**
+     * @return boolean
+     *
      * Checks if the Character has a Portal in their Treasure inventory.
      * If so, sets their MovementBehavior to BlinkMovement (to use the Portal)
      * if not, Characters continue RandomWalk MovementBehavior.
@@ -26,12 +40,9 @@ public abstract class Character extends Entity {
      * but this was not specified and is simpler to code -
      * so we are assuming that Characters love to use their portal gun.
      */
-    public void checkPortalInInventory() {
+    public boolean checkPortalInInventory() {
         ArrayList<String> inventoryTypes =  getInventoryTypes();
-        if (inventoryTypes.contains("Portal")) {
-            BlinkMovement blinkMovement = new BlinkMovement();
-            setMovementBehavior(blinkMovement);
-        }
+        return inventoryTypes.contains("Portal");
     }
 
 
@@ -132,4 +143,18 @@ public abstract class Character extends Entity {
     public void setSearchBehavior(final TreasureHuntBehavior searchBehavior) {
         this.searchBehavior = searchBehavior;
     }
+
+
+    /**
+     * @return Celebration
+     *
+     * Gets the Celebration behavior.
+     */
+    public Celebration getCelebrationBehavior() {
+        return this.celebrationBehavior;
+    }
+
+
+
+
 }
