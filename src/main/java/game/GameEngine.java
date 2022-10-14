@@ -31,7 +31,7 @@ public class GameEngine {
     private CharacterFactory PlayerFactory = new CharacterFactory(dungeon);
     private CreatureFactory EnemyFactory = new CreatureFactory(dungeon);
 
-    private final Tracker tracker = Tracker.getInstance(); // Game Tracker
+    public final Tracker tracker = Tracker.getInstance(); // Game Tracker
     // Using the Tracker is an example of the Observer pattern.
     // Events are published to the Tracker (pointed out in comments)
     // And then the Tracker let's any interested parties know about the events.
@@ -413,4 +413,15 @@ public class GameEngine {
             endCondition = true;
         }
     }
+
+
+    public void recieveSearchCommand(final Character character){
+        simulateTreasureHunt(character);
+
+    }
+
+    public void recieveFightCommand(final Character character,
+        final Creature creature){
+            simulateFight(character, creature);
+        }
 }

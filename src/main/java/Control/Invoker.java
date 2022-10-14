@@ -1,5 +1,7 @@
 package Control;
 import entity.*;
+import entity.Character;
+import game.GameEngine;
 import treasure.Treasure;
 import dungeon.*;
 import java.util.ArrayList;
@@ -7,19 +9,19 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 public class Invoker {
-    private Entity CharacterRef;
+    private Character CharacterRef;
     private MoveCommand Move_Command;
     private FightCommand Fight_Command;
     private SearchCommand Search_Command;
     private CelebrateCommand Celebrate_Command;
     private Hashtable<Integer, Command> Remote;
 
-    Invoker(Entity CharacterRef){
+    Invoker(Character CharacterRef,GameEngine gameRef){
         this.CharacterRef = CharacterRef;
-        Move_Command = new MoveCommand(CharacterRef);
-        Fight_Command = new FightCommand(CharacterRef);
-        Search_Command = new SearchCommand(CharacterRef);
-        Celebrate_Command = new CelebrateCommand(CharacterRef);
+        Move_Command = new MoveCommand(CharacterRef,gameRef);
+        Fight_Command = new FightCommand(CharacterRef,gameRef);
+        Search_Command = new SearchCommand(CharacterRef,gameRef);
+        Celebrate_Command = new CelebrateCommand(CharacterRef,gameRef);
     }
 
     public void ControlSequence(){
@@ -87,6 +89,4 @@ public class Invoker {
 
         
     }
-
-
 }

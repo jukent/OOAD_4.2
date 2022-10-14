@@ -2,6 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
+import celebration.*;
 import movement.BlinkMovement;
 import treasure.Treasure;
 import treasurehunt.TreasureHuntBehavior;
@@ -14,8 +15,15 @@ public abstract class Character extends Entity {
     private ArrayList<String> inventoryTypes
         = new ArrayList<String>(); // ArrayList of Treasure inventory types
         // (Strings)
+    private Celebration celebrationBehavior;
 
 
+    Character(){
+        celebrationBehavior = new SpinCelebration(this.getFightBehavior());
+        celebrationBehavior = new DanceCelebration(celebrationBehavior);
+        celebrationBehavior = new JumpCelebration(celebrationBehavior);
+        celebrationBehavior = new ShoutCelebration(celebrationBehavior);
+    }
     /**
      * Checks if the Character has a Portal in their Treasure inventory.
      * If so, sets their MovementBehavior to BlinkMovement (to use the Portal)
@@ -133,7 +141,9 @@ public abstract class Character extends Entity {
         this.searchBehavior = searchBehavior;
     }
 
-    
+    public Celebration getCelebrationBehavior(){
+        return this.celebrationBehavior;
+    }
 
 
 

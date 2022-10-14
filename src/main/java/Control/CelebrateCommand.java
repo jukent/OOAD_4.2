@@ -1,15 +1,15 @@
 package Control;
-import entity.*;
+import entity.Character;
+import game.*;
 
 public class CelebrateCommand extends Command{
-    CelebrateCommand(Entity CharacterRef){
-        super(CharacterRef);
+    CelebrateCommand(Character CharacterRef, GameEngine gameRef){
+        super( CharacterRef, gameRef);
     }
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        
+        this.CharacterRef.getCelebrationBehavior().celebrate();
     }
 
 }

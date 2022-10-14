@@ -1,12 +1,15 @@
 package Control;
-import entity.*;
+import entity.Character;
+import game.GameEngine;
 
 public abstract class Command {
-    Entity CharacterRef;
+    Character CharacterRef;
+    GameEngine gameRef;
     //Constructor
-    Command(Entity CharacterRef){
+    Command(Character CharacterRef, GameEngine gameRef){
         this.CharacterRef = CharacterRef;
+        this.gameRef = gameRef;
     }
-    
+
     public abstract void execute();
 }

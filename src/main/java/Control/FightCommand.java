@@ -1,17 +1,25 @@
 package Control;
 import entity.*;
+import dungeon.*;
+import entity.Character;
+import java.util.ArrayList;
+import game.*;
 
 public class FightCommand extends Command{
 
-    FightCommand(Entity CharacterRef){
-        super(CharacterRef);
+    FightCommand(Character CharacterRef, GameEngine gameRef){
+        super( CharacterRef, gameRef);
 
     }
     
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        
+        Room currentRoom = CharacterRef.getLocation();
+        ArrayList<Creature> creaturesInRoom = currentRoom.getCreaturesInRoom();
+        for (int j = 0; j < creaturesInRoom.size(); j++) {
+            Creature creature = creaturesInRoom.get(j);
+            gameRef.recieveFightCommand(this.CharacterRef, creature);
+        }
     }
 
 }

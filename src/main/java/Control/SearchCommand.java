@@ -1,17 +1,13 @@
 package Control;
-import entity.*;
+import entity.Character;
+import game.*;
 
 public class SearchCommand extends Command{
-    SearchCommand(Entity CharacterRef){
-        super(CharacterRef);}
+    SearchCommand(Character CharacterRef, GameEngine gameRef){
+        super( CharacterRef, gameRef);}
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        
+        this.gameRef.recieveSearchCommand(this.CharacterRef);
     }
-
-
-
-
     }
