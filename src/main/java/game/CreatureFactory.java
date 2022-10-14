@@ -1,61 +1,77 @@
 package game;
 import java.util.ArrayList;
-import entity.*; 
+import entity.*;
 import dungeon.*;
 
-public class CreatureFactory extends Factory{
-    
-CreatureFactory(Dungeon dungeonRef){
-    this.dungeonRef = dungeonRef;
+public class CreatureFactory extends Factory {
 
-}
 
-Creature CreateEntity(EntityEnum type, String Title){
-    switch(type){
-        case RUNNER:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);
-        case BRAWLER:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);
-        case THIEF:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);
-        case SNEAKER:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);
-        case NULL:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);
-        case BLINKER:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);  
-        case SEEKER:
-            this.ID++;
-            return new Seeker(this.ID, this.dungeonRef);
-        case ORBITER:
-            this.ID++;
-            return new Orbiter(this.ID, this.dungeonRef);
-        default:
-            this.ID++;
-            return new Blinker(this.ID, this.dungeonRef);
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Constructor for the Creature Factory.
+     */
+    public CreatureFactory(final Dungeon dungeonRef) {
+        this.dungeonRef = dungeonRef;
     }
-    
+
+
+    /* (non-Javadoc)
+     * @see game.Factory#createEntity(entity.EntityEnum, java.lang.String)
+     *
+     * Creates the Creatures.
+     */
+    @Override
+    public Creature createEntity(final EntityEnum type, final String title) {
+        switch (type) {
+            case RUNNER:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+            case BRAWLER:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+            case THIEF:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+            case SNEAKER:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+            case NULL:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+            case BLINKER:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+            case SEEKER:
+                this.id++;
+                return new Seeker(this.id, this.dungeonRef);
+            case ORBITER:
+                this.id++;
+                return new Orbiter(this.id, this.dungeonRef);
+            default:
+                this.id++;
+                return new Blinker(this.id, this.dungeonRef);
+        }
+    }
+
+
+    /**
+     * @param copies int
+     * @return ArrayList<Creature>
+     *
+     * Creates an ArrayList of Creatures based on how many copies
+     * are requested.
+     */
+    public ArrayList<Creature> entitySet(final int copies) {
+        ArrayList<Creature> creaturelist = new ArrayList<Creature>();
+        for (int i = 0; i < copies; i++) {
+            creaturelist.add(new Blinker(this.id, this.dungeonRef));
+            this.id++;
+            creaturelist.add(new Orbiter(this.id, this.dungeonRef));
+            this.id++;
+            creaturelist.add(new Seeker(this.id, this.dungeonRef));
+            this.id++;
+        }
+        return creaturelist;
+    }
 }
-
-
-ArrayList<Creature> EntitySet(int copies){
-    ArrayList<Creature> creaturelist = new ArrayList<Creature>();
-    for(int i = 0; i<copies; i++){
-    creaturelist.add(new Blinker(this.ID, this.dungeonRef));
-    this.ID++;
-    creaturelist.add(new Orbiter(this.ID, this.dungeonRef));
-    this.ID++;
-    creaturelist.add(new Seeker(this.ID, this.dungeonRef));
-    this.ID++;}
-    return creaturelist;
-}
-
-
-}
-

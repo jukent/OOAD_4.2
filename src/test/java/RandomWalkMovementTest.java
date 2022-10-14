@@ -13,7 +13,7 @@ public class RandomWalkMovementTest {
 
     @Test
     public void testRandomWalk() {
-        Brawler character = new Brawler(0, dungeon,"");
+        Brawler character = new Brawler(0, dungeon, "");
         Room oldRoom = dungeon.getRoom("(1-0-0)");
         character.setLocation(oldRoom);
 

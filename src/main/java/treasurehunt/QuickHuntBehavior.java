@@ -30,6 +30,6 @@ public class QuickHuntBehavior extends TreasureHuntBehavior {
     public int searchTreasure() {
             return DiceRolls.rollDice(DICESIDES)
             + DiceRolls.rollDice(DICESIDES);
-        
+
     }
 }

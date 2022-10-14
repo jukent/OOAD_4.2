@@ -35,7 +35,7 @@ public class BlinkMovementTest {
 
     @Test
     public void testCharacterBlink() {
-        Brawler character = new Brawler(0, dungeon,"");
+        Brawler character = new Brawler(0, dungeon, "");
 
         Room oldRoom = character.getLocation();
 

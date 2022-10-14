@@ -91,19 +91,34 @@ public class GameEngine {
         EntityEnum type = EntityEnum.NULL;
         int id = 0; // Object ID value
         boolean nameVal = true;
-        String Name = new String();
-        while(nameVal){
-        System.out.println("Enter your character type (Brawler, Thief, Sneaker, Runner): ");
-        String stringtype = scanner.nextLine().toUpperCase();
-        System.out.println("Enter your name: ");
-        Name = scanner.nextLine();
+        String name = new String();
+        while (nameVal) {
+            System.out.println("Enter your character type "
+                + "(Brawler, Thief, Sneaker, Runner): ");
+            String stringtype = scanner.nextLine().toUpperCase();
+            System.out.println("Enter your name: ");
+            name = scanner.nextLine();
 
-        if(stringtype.equals("BRAWLER")){type = EntityEnum.BRAWLER;nameVal = false;}
-        if(stringtype.equals("THIEF")){type = EntityEnum.THIEF;nameVal = false;}
-        if(stringtype.equals("SNEAKER")){type = EntityEnum.SNEAKER;nameVal = false;}
-        if(stringtype.equals("RUNNER")){type = EntityEnum.RUNNER; nameVal = false;}
-        else{System.out.println("Try again");
-        System.out.println();}}
+            if (stringtype.equals("BRAWLER")) {
+                type = EntityEnum.BRAWLER;
+                nameVal = false;
+            }
+            if (stringtype.equals("THIEF")) {
+                type = EntityEnum.THIEF;
+                nameVal = false;
+            }
+            if (stringtype.equals("SNEAKER")) {
+                type = EntityEnum.SNEAKER;
+                nameVal = false;
+            }
+            if (stringtype.equals("RUNNER")) {
+                type = EntityEnum.RUNNER;
+                nameVal = false;
+            } else {
+                System.out.println("Try again");
+                System.out.println();
+            }
+        }
 
         // Characters
         Character newPlayer = PlayerFactory.CreateEntity(type, Name);
@@ -116,7 +131,7 @@ public class GameEngine {
 
         // Creatures
         // Also an example of polymorphism
-        creatureList = EnemyFactory.EntitySet(4);
+        creatureList = enemyFactory.entitySet(4);
         // publish initial Creature stats to Tracker
         tracker.setCreatureStats(creatureList);
         // Again, example of Observer pattern.
@@ -190,7 +205,7 @@ public class GameEngine {
                     // Publish Creature won to Tracker
                     tracker.entityWon(character, creature,
                         characterRoll, creatureRoll, "CreatureWon");
-                    if(character.getHealth() <= 0) {
+                    if (character.getHealth() <= 0) {
                         // Remove dead Character, publish to Tracker
                         tracker.removeCharacter(character);
                     }
@@ -392,6 +407,14 @@ public class GameEngine {
             System.out.println("\n");
         } else {
             endCondition = true;
+        }
+        if (!endCondition) {
+            try {
+                Plotter plotter = new Plotter();
+                plotter.plotLineGraph();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

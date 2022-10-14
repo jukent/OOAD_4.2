@@ -4,54 +4,65 @@ import entity.*;
 import entity.Character;
 import dungeon.*;
 
-public class CharacterFactory extends Factory{
-    
-    CharacterFactory(Dungeon dungeonRef){
+public class CharacterFactory extends Factory {
+
+
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Constructs the Character factory.
+     */
+    CharacterFactory(final Dungeon dungeonRef) {
         this.dungeonRef = dungeonRef;
     }
 
-    public Character CreateEntity(EntityEnum type, String Title){
-        switch(type){
+
+    /* (non-Javadoc)
+     * @see game.Factory#createEntity(entity.EntityEnum, java.lang.String)
+     */
+    @Override
+    public Character createEntity(final EntityEnum type, final String title) {
+        switch (type) {
             case RUNNER:
-                return new Runner(this.ID, this.dungeonRef,Title);
+                return new Runner(this.id, this.dungeonRef, title);
             case BRAWLER:
-                return new Brawler(this.ID, this.dungeonRef,Title);
+                return new Brawler(this.id, this.dungeonRef, title);
             case THIEF:
-                return new Thief(this.ID, this.dungeonRef,Title);
+                return new Thief(this.id, this.dungeonRef, title);
             case SNEAKER:
-                return new Sneaker(this.ID, this.dungeonRef,Title);
+                return new Sneaker(this.id, this.dungeonRef, title);
             case NULL:
-                return new Sneaker(this.ID, this.dungeonRef,Title);
+                return new Sneaker(this.id, this.dungeonRef, title);
             case BLINKER:
-                return new Sneaker(this.ID, this.dungeonRef,Title);  
+                return new Sneaker(this.id, this.dungeonRef, title);
             case SEEKER:
-                return new Sneaker(this.ID, this.dungeonRef,Title);
+                return new Sneaker(this.id, this.dungeonRef, title);
             case ORBITER:
-                return new Sneaker(this.ID, this.dungeonRef,Title);
+                return new Sneaker(this.id, this.dungeonRef, title);
             default:
-                return new Sneaker(this.ID, this.dungeonRef,Title);
-    
+                return new Sneaker(this.id, this.dungeonRef, title);
         }
-
-
-
-
     }
 
 
-    public ArrayList<Character> EntitySet(int copies){
+    /**
+     * @param copies int
+     * @return ArrayList<Character>
+     *
+     * Creates an ArrayList of Characters.
+     */
+    public ArrayList<Character> entitySet(final int copies) {
         ArrayList<Character> characterList = new ArrayList<Character>();
-        for(int i = 0; i<copies; i++){
-        characterList.add(new Runner(this.ID, this.dungeonRef,""));
-        this.ID++;
-        characterList.add(new Sneaker(this.ID, this.dungeonRef,""));
-        this.ID++;
-        characterList.add(new Thief(this.ID, this.dungeonRef,""));
-        this.ID++;
-        characterList.add(new Brawler(this.ID, this.dungeonRef,""));
-        this.ID++;}
+        for (int i = 0; i < copies; i++) {
+            characterList.add(new Runner(this.id, this.dungeonRef, ""));
+            this.id++;
+            characterList.add(new Sneaker(this.id, this.dungeonRef, ""));
+            this.id++;
+            characterList.add(new Thief(this.id, this.dungeonRef, ""));
+            this.id++;
+            characterList.add(new Brawler(this.id, this.dungeonRef, ""));
+            this.id++;
+        }
         return characterList;
     }
-    
-
 }

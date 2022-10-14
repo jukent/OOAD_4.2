@@ -11,7 +11,7 @@ import celebration.*;
 
 public class CelebrationTest {
     private Dungeon dungeon = Dungeon.getInstance();
-    private Character character = new Runner(1, dungeon,"");
+    private Character character = new Runner(1, dungeon, "");
     private FightBehavior fightBehavior = character.getFightBehavior();
 
 
