@@ -108,7 +108,7 @@ public class GameEngine {
         // Characters
         Character newPlayer = PlayerFactory.CreateEntity(type, Name);
         characterList.add(newPlayer);
-        controller = Invoker(newPlayer,this);
+        controller = new Invoker(newPlayer,this);
         // publish initial Character stats to Tracker
         tracker.setCharacterStats(characterList);
         // Example of Observer pattern
@@ -315,30 +315,7 @@ public class GameEngine {
      */
     private void process1Character(final Character character) {
         // Process turn counts for characters. Mostly 1 but runners have 2
-        for (int i = 0; i < character.getMoveCount(); i++) {
-            // Move to new Room
-            Room oldRoom = character.getLocation();
-            // Check if Character will Blink or RandomWalk
-            character.checkPortalInInventory();
-            character.move();
-            Room newRoom = character.getLocation();
-            // Publish Character moved to Tracker
-            tracker.characterMoved(character, oldRoom, newRoom);
-
-            // Look for creatures
-            ArrayList<Creature> creaturesInRoom = newRoom.getCreaturesInRoom();
-            if (creaturesInRoom.size() > 0) {
-                // If there are Creatures in the room, fight
-                for (int j = 0; j < creaturesInRoom.size(); j++) {
-                    Creature creature = creaturesInRoom.get(j);
-                    simulateFight(character, creature);
-                }
-                continue;
-            } else {
-                // If there are no Creatures in the room, look for treasure
-                simulateTreasureHunt(character);
-            }
-        }
+        controller.ControlSequence();
     }
 
 

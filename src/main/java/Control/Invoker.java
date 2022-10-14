@@ -16,7 +16,7 @@ public class Invoker {
     private CelebrateCommand Celebrate_Command;
     private Hashtable<Integer, Command> Remote;
 
-    Invoker(Character CharacterRef,GameEngine gameRef){
+    public Invoker(Character CharacterRef,GameEngine gameRef){
         this.CharacterRef = CharacterRef;
         Move_Command = new MoveCommand(CharacterRef,gameRef);
         Fight_Command = new FightCommand(CharacterRef,gameRef);
