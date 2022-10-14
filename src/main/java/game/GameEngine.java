@@ -30,7 +30,7 @@ public class GameEngine {
     private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
     private CharacterFactory PlayerFactory = new CharacterFactory(dungeon);
-    private CreatureFactory EnemyFactory = new CreatureFactory(dungeon);
+    private CreatureFactory enemyFactory = new CreatureFactory(dungeon);
     private Invoker controller;
 
     public final Tracker tracker = Tracker.getInstance(); // Game Tracker
@@ -121,7 +121,7 @@ public class GameEngine {
         }
 
         // Characters
-        Character newPlayer = PlayerFactory.CreateEntity(type, Name);
+        Character newPlayer = PlayerFactory.createEntity(type, name);
         characterList.add(newPlayer);
         controller = new Invoker(newPlayer,this);
         // publish initial Character stats to Tracker
@@ -431,5 +431,9 @@ public class GameEngine {
 
     public Dungeon getDungeon(){
         return this.dungeon;
+    }
+
+    public Printer getPrinter(){
+        return this.printer;
     }
 }

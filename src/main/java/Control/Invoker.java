@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class Invoker {
     private Character CharacterRef;
+    private GameEngine gameRef;
     private MoveCommand Move_Command;
     private FightCommand Fight_Command;
     private SearchCommand Search_Command;
@@ -18,6 +19,7 @@ public class Invoker {
 
     public Invoker(Character CharacterRef,GameEngine gameRef){
         this.CharacterRef = CharacterRef;
+        this.gameRef = gameRef;
         Move_Command = new MoveCommand(CharacterRef,gameRef);
         Fight_Command = new FightCommand(CharacterRef,gameRef);
         Search_Command = new SearchCommand(CharacterRef,gameRef);
@@ -29,13 +31,12 @@ public class Invoker {
         int ExitChoice = 0;
         int PlayerChoice = 0;
         boolean RoundCompleted = false;
-        Scanner Input; 
+        Scanner Input = gameRef.getPrinter().scanner;
         Remote.clear();
         System.out.println("New Turn");
 
 
         while(!RoundCompleted){
-            Input = new java.util.Scanner(System.in);
             int ChoiceNum = 1;
             int MoveChoice = 0;
             Room currentRoom = this.CharacterRef.getLocation();
@@ -44,7 +45,7 @@ public class Invoker {
     
             System.out.println();
             System.out.println(this.CharacterRef.getTitle()+" options: ");
-            if(MoveCount <= this.CharacterRef.getMoveCount()){
+            if(MoveCount < this.CharacterRef.getMoveCount()){
                 System.out.println(String.valueOf(ChoiceNum) + ": Move");
                 Remote.put(ChoiceNum,Move_Command);
                 MoveChoice = ChoiceNum;
@@ -65,28 +66,31 @@ public class Invoker {
             ChoiceNum += 1;
     
             System.out.println(String.valueOf(ChoiceNum) + ": End Turn");
-            RoundCompleted = true;
             ExitChoice = ChoiceNum;
             ChoiceNum += 1;
 
             System.out.print("Your choice: ");
             String nextline = Input.nextLine();
             PlayerChoice = Integer.valueOf(nextline);
-            Input.close();
+            
 
 
 
             if(PlayerChoice == ExitChoice){
                 RoundCompleted = true;
+                System.out.println("We ended the turn");
             }
             else if (Remote.containsKey(PlayerChoice)){
                 Remote.get(PlayerChoice).execute();
-                if(ChoiceNum==MoveChoice){MoveCount += 1;}
+                if(PlayerChoice==MoveChoice){
+                    MoveCount += 1;
+                    System.out.println("Move Count");
+                    System.out.println(MoveCount);
+                }
             }
             else{
                 System.out.println("Try again");
             }
-        
             
         }
     }

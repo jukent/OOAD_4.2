@@ -20,13 +20,14 @@ public class MoveCommand  extends Command{
     public void execute() {
         
         boolean chosen = false;
-        Scanner Input = new java.util.Scanner(System.in);
+        Scanner Input = this.gameRef.getPrinter().scanner;
         Room currentRoom = this.CharacterRef.getLocation();
         Room oldRoom = this.CharacterRef.getLocation();
         Room newRoom;
         
         while(!chosen){
             movementOptions.clear();
+            System.out.println();
             System.out.println("Movement Options:");
             ArrayList<String> exits = currentRoom.getExits();
 
@@ -34,16 +35,16 @@ public class MoveCommand  extends Command{
                 System.out.println(String.valueOf(0) + ": Portal (random room)");
                 movementOptions.put(0, "Blink");
             }
-            for(int i = 1; i <= exits.size(); i++){
-                System.out.println(String.valueOf(i) + ": " + exits.get(i));
-                movementOptions.put(i, exits.get(i));
+            for(int i = 0; i < exits.size(); i++){
+                System.out.println(String.valueOf(i+1) + ": " + exits.get(i));
+                movementOptions.put(i+1, exits.get(i));
 
             }
 
 
             System.out.print("Select a direction: ");
             int Choice = Integer.valueOf(Input.nextLine());
-            if(movementOptions.contains(Choice)){
+            if(movementOptions.containsKey(Choice)){
                 chosen = true;
                 if(Choice == 0){
                     portalMovement.move(CharacterRef, gameRef.getDungeon());
@@ -60,7 +61,6 @@ public class MoveCommand  extends Command{
                 chosen = false;
             }
         }
-        Input.close();
     }
 
 }

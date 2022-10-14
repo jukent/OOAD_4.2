@@ -16,7 +16,7 @@ public class Printer {
     private final String outputType; // Output options:
     // OneScreen, ShowAll, ShowEnding, ShowNone
 
-    private final Scanner scanner
+    public final Scanner scanner
         = new java.util.Scanner(System.in); // A Scanner for awaiting user input
 
 

@@ -10,6 +10,7 @@ public class CelebrateCommand extends Command{
     @Override
     public void execute() {
         this.CharacterRef.getCelebrationBehavior().celebrate();
+        System.out.println();
     }
 
 }
