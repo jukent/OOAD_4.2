@@ -17,13 +17,20 @@ public abstract class Character extends Entity {
     private Celebration celebrationBehavior;
 
 
-    Character(){
+    /**
+     * Constructor for a Character.
+     */
+    Character() {
         celebrationBehavior = new SpinCelebration(this.getFightBehavior());
         celebrationBehavior = new DanceCelebration(celebrationBehavior);
         celebrationBehavior = new JumpCelebration(celebrationBehavior);
         celebrationBehavior = new ShoutCelebration(celebrationBehavior);
     }
+
+
     /**
+     * @return boolean
+     *
      * Checks if the Character has a Portal in their Treasure inventory.
      * If so, sets their MovementBehavior to BlinkMovement (to use the Portal)
      * if not, Characters continue RandomWalk MovementBehavior.
@@ -35,10 +42,7 @@ public abstract class Character extends Entity {
      */
     public boolean checkPortalInInventory() {
         ArrayList<String> inventoryTypes =  getInventoryTypes();
-        if (inventoryTypes.contains("Portal")) {
-            return true;
-        }
-        else{return false;}
+        return inventoryTypes.contains("Portal");
     }
 
 
@@ -140,7 +144,13 @@ public abstract class Character extends Entity {
         this.searchBehavior = searchBehavior;
     }
 
-    public Celebration getCelebrationBehavior(){
+
+    /**
+     * @return Celebration
+     *
+     * Gets the Celebration behavior.
+     */
+    public Celebration getCelebrationBehavior() {
         return this.celebrationBehavior;
     }
 

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import celebration.*;
+import control.Invoker;
 import dungeon.*;
 import entity.*;
 import entity.Character;
 import fight.FightBehavior;
 import treasure.*;
-import Control.Invoker;
 
 public class GameEngine {
 
@@ -29,7 +29,7 @@ public class GameEngine {
     private ArrayList<Character> characterList = new ArrayList<Character>();
     private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
-    private CharacterFactory PlayerFactory = new CharacterFactory(dungeon);
+    private CharacterFactory playerFactory = new CharacterFactory(dungeon);
     private CreatureFactory enemyFactory = new CreatureFactory(dungeon);
     private Invoker controller;
 
@@ -121,9 +121,9 @@ public class GameEngine {
         }
 
         // Characters
-        Character newPlayer = PlayerFactory.createEntity(type, name);
+        Character newPlayer = playerFactory.createEntity(type, name);
         characterList.add(newPlayer);
-        controller = new Invoker(newPlayer,this);
+        controller = new Invoker(newPlayer, this);
         // publish initial Character stats to Tracker
         tracker.setCharacterStats(characterList);
         // Example of Observer pattern
@@ -330,7 +330,7 @@ public class GameEngine {
      */
     private void process1Character(final Character character) {
         // Process turn counts for characters. Mostly 1 but runners have 2
-        controller.ControlSequence();
+        controller.controlSequence();
     }
 
 
@@ -419,21 +419,45 @@ public class GameEngine {
     }
 
 
-    public void recieveSearchCommand(final Character character){
+    /**
+     * @param character Character
+     *
+     * Gets the User input "Search" Command.
+     */
+    public void recieveSearchCommand(final Character character) {
         simulateTreasureHunt(character);
 
     }
 
-    public void recieveFightCommand(final Character character,
-        final Creature creature){
-            simulateFight(character, creature);
-        }
 
-    public Dungeon getDungeon(){
+    /**
+     * @param character Character
+     * @param creature Creature
+     *
+     * Gets the User input "Fight" Command.
+     */
+    public void recieveFightCommand(final Character character,
+        final Creature creature) {
+            simulateFight(character, creature);
+    }
+
+    
+    /**
+     * @return Dungeon
+     *
+     * Gets the Game Dungeon.
+     */
+    public Dungeon getDungeon() {
         return this.dungeon;
     }
 
-    public Printer getPrinter(){
+
+    /**
+     * @return Printer
+     *
+     * Gets the Game Printer.
+     */
+    public Printer getPrinter() {
         return this.printer;
     }
 }

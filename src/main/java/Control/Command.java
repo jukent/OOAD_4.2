@@ -1,15 +1,26 @@
-package Control;
+package control;
 import entity.Character;
 import game.GameEngine;
 
 public abstract class Command {
-    Character CharacterRef;
+    Character characterRef;
     GameEngine gameRef;
-    //Constructor
-    Command(Character CharacterRef, GameEngine gameRef){
-        this.CharacterRef = CharacterRef;
+
+
+    /**
+     * @param characterRef Character
+     * @param gameRef GameEngine
+     *
+     * Constructor for a Command.
+     */
+    Command(final Character characterRef, final GameEngine gameRef) {
+        this.characterRef = characterRef;
         this.gameRef = gameRef;
     }
 
+
+    /**
+     * Abstract Command execution mehtod.
+     */
     public abstract void execute();
 }
