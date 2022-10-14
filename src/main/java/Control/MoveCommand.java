@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class MoveCommand  extends Command{
-    private Hashtable<Integer,String> movementOptions; 
+    private Hashtable<Integer,String> movementOptions = new Hashtable<Integer,String>(); 
     private BlinkMovement portalMovement = new BlinkMovement();
     
     MoveCommand(Character CharacterRef, GameEngine gameRef){

@@ -14,7 +14,7 @@ public class Invoker {
     private FightCommand Fight_Command;
     private SearchCommand Search_Command;
     private CelebrateCommand Celebrate_Command;
-    private Hashtable<Integer, Command> Remote;
+    private Hashtable<Integer, Command> Remote = new Hashtable<Integer, Command>();
 
     public Invoker(Character CharacterRef,GameEngine gameRef){
         this.CharacterRef = CharacterRef;
@@ -29,18 +29,22 @@ public class Invoker {
         int ExitChoice = 0;
         int PlayerChoice = 0;
         boolean RoundCompleted = false;
-        Scanner Input = new java.util.Scanner(System.in); 
+        Scanner Input; 
         Remote.clear();
+        System.out.println("New Turn");
+
 
         while(!RoundCompleted){
+            Input = new java.util.Scanner(System.in);
             int ChoiceNum = 1;
             int MoveChoice = 0;
             Room currentRoom = this.CharacterRef.getLocation();
             ArrayList<Creature> creaturesInRoom = currentRoom.getCreaturesInRoom();
             ArrayList<Treasure> treasuresInRoom = currentRoom.getTreasuresInRoom();
     
+            System.out.println();
             System.out.println(this.CharacterRef.getTitle()+" options: ");
-            if(MoveCount == this.CharacterRef.getMoveCount()){
+            if(MoveCount <= this.CharacterRef.getMoveCount()){
                 System.out.println(String.valueOf(ChoiceNum) + ": Move");
                 Remote.put(ChoiceNum,Move_Command);
                 MoveChoice = ChoiceNum;
@@ -66,8 +70,9 @@ public class Invoker {
             ChoiceNum += 1;
 
             System.out.print("Your choice: ");
-            PlayerChoice = Integer.valueOf(Input.nextLine());
-
+            String nextline = Input.nextLine();
+            PlayerChoice = Integer.valueOf(nextline);
+            Input.close();
 
 
 
@@ -82,11 +87,7 @@ public class Invoker {
                 System.out.println("Try again");
             }
         
-
+            
         }
-        Input.close();
-
-
-        
     }
 }
