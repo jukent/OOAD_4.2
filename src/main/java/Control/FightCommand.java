@@ -9,7 +9,7 @@ public class FightCommand extends Command {
 
 
     /**
-     * @param CharacterRef Character
+     * @param characterRef Character
      * @param gameRef GameEngine
      *
      * Constructor for the Fight Command.

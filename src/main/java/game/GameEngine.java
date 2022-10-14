@@ -441,7 +441,7 @@ public class GameEngine {
             simulateFight(character, creature);
     }
 
-    
+
     /**
      * @return Dungeon
      *

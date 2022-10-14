@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class MoveCommand  extends Command {
-    private Hashtable<Integer,String> movementOptions
-        = new Hashtable<Integer,String>(); 
+    private Hashtable<Integer, String> movementOptions
+        = new Hashtable<Integer, String>();
     private BlinkMovement portalMovement = new BlinkMovement();
 
 
@@ -20,7 +20,7 @@ public class MoveCommand  extends Command {
      *
      * Constructor for the Move Command.
      */
-    MoveCommand(Character characterRef, GameEngine gameRef) {
+    MoveCommand(final Character characterRef, final GameEngine gameRef) {
         super(characterRef, gameRef);
     }
 
@@ -32,13 +32,13 @@ public class MoveCommand  extends Command {
      */
     @Override
     public void execute() {
-        
+
         boolean chosen = false;
-        Scanner Input = this.gameRef.getPrinter().scanner;
+        Scanner input = this.gameRef.getPrinter().scanner;
         Room currentRoom = this.characterRef.getLocation();
         Room oldRoom = this.characterRef.getLocation();
         Room newRoom;
-        
+
         while (!chosen) {
             movementOptions.clear();
             System.out.println();
@@ -57,7 +57,7 @@ public class MoveCommand  extends Command {
             }
 
             System.out.print("Select a direction: ");
-            int choice = Integer.valueOf(Input.nextLine());
+            int choice = Integer.valueOf(input.nextLine());
             if (movementOptions.containsKey(choice)) {
                 chosen = true;
                 if (choice == 0) {

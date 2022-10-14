@@ -25,13 +25,13 @@ public class Invoker {
      *
      * Constructor for the Command Invoker.
      */
-    public Invoker(final Character characterRef, final GameEngine gameRef){
+    public Invoker(final Character characterRef, final GameEngine gameRef) {
         this.characterRef = characterRef;
         this.gameRef = gameRef;
-        moveCommand = new MoveCommand(characterRef,gameRef);
-        fightCommand = new FightCommand(characterRef,gameRef);
-        searchCommand = new SearchCommand(characterRef,gameRef);
-        celebrateCommand = new CelebrateCommand(characterRef,gameRef);
+        moveCommand = new MoveCommand(characterRef, gameRef);
+        fightCommand = new FightCommand(characterRef, gameRef);
+        searchCommand = new SearchCommand(characterRef, gameRef);
+        celebrateCommand = new CelebrateCommand(characterRef, gameRef);
     }
 
     /**
@@ -50,11 +50,13 @@ public class Invoker {
             int choiceNum = 1;
             int moveChoice = 0;
             Room currentRoom = this.characterRef.getLocation();
-            ArrayList<Creature> creaturesInRoom = currentRoom.getCreaturesInRoom();
-            ArrayList<Treasure> treasuresInRoom = currentRoom.getTreasuresInRoom();
-    
+            ArrayList<Creature> creaturesInRoom
+                = currentRoom.getCreaturesInRoom();
+            ArrayList<Treasure> treasuresInRoom
+                = currentRoom.getTreasuresInRoom();
+
             System.out.println();
-            System.out.println(this.characterRef.getTitle()+" options: ");
+            System.out.println(this.characterRef.getTitle() + " options: ");
             if (moveCount < this.characterRef.getMoveCount()) {
                 System.out.println(String.valueOf(choiceNum) + ": Move");
                 remote.put(choiceNum, moveCommand);
@@ -76,7 +78,7 @@ public class Invoker {
             System.out.println(String.valueOf(choiceNum) + ": PARTY!!!!");
             remote.put(choiceNum, celebrateCommand);
             choiceNum += 1;
-    
+
             System.out.println(String.valueOf(choiceNum) + ": End Turn");
             exitChoice = choiceNum;
             choiceNum += 1;

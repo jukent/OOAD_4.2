@@ -12,7 +12,7 @@ public class SearchCommand extends Command {
      * Constructor for the Search Command.
      */
     SearchCommand(final Character characterRef, final GameEngine gameRef) {
-        super( characterRef, gameRef);
+        super(characterRef, gameRef);
     }
 
 
