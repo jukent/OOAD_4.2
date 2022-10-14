@@ -9,6 +9,7 @@ import entity.*;
 import entity.Character;
 import fight.FightBehavior;
 import treasure.*;
+import Control.Invoker;
 
 public class GameEngine {
 
@@ -30,6 +31,7 @@ public class GameEngine {
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
     private CharacterFactory PlayerFactory = new CharacterFactory(dungeon);
     private CreatureFactory EnemyFactory = new CreatureFactory(dungeon);
+    private Invoker controller;
 
     public final Tracker tracker = Tracker.getInstance(); // Game Tracker
     // Using the Tracker is an example of the Observer pattern.
@@ -104,7 +106,9 @@ public class GameEngine {
         System.out.println();}}
 
         // Characters
-        characterList.add(PlayerFactory.CreateEntity(type, Name));
+        Character newPlayer = PlayerFactory.CreateEntity(type, Name);
+        characterList.add(newPlayer);
+        controller = Invoker(newPlayer,this);
         // publish initial Character stats to Tracker
         tracker.setCharacterStats(characterList);
         // Example of Observer pattern
@@ -424,4 +428,8 @@ public class GameEngine {
         final Creature creature){
             simulateFight(character, creature);
         }
+
+    public Dungeon getDungeon(){
+        return this.dungeon;
+    }
 }

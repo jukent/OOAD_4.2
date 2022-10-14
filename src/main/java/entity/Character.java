@@ -3,7 +3,6 @@ package entity;
 import java.util.ArrayList;
 
 import celebration.*;
-import movement.BlinkMovement;
 import treasure.Treasure;
 import treasurehunt.TreasureHuntBehavior;
 
@@ -34,12 +33,12 @@ public abstract class Character extends Entity {
      * but this was not specified and is simpler to code -
      * so we are assuming that Characters love to use their portal gun.
      */
-    public void checkPortalInInventory() {
+    public boolean checkPortalInInventory() {
         ArrayList<String> inventoryTypes =  getInventoryTypes();
         if (inventoryTypes.contains("Portal")) {
-            BlinkMovement blinkMovement = new BlinkMovement();
-            setMovementBehavior(blinkMovement);
+            return true;
         }
+        else{return false;}
     }
 
 
