@@ -298,6 +298,16 @@ public class Printer {
     public void printStartingScreen() {
         if (outputType != "ShowNone") {
             System.out.println("Starting Game!");
+            System.out.println("Welcome to Raiders of the Lost Arctangent");
+
+            System.out.println("You are a brave adventurer about to explore a "
+                + "dungeon that contains numerous perils.");
+            System.out.println("Once you have found the 6 treasures (Armor, "
+                + "Gem, Portal, Potion, Sword, and Trap) or defeated all of "
+                + "the creatures, you may leave victorious!");
+            System.out.println("If you leave the dungeon too soon, you will be "
+                + "branded a coward and a loser.");
+            System.out.println("Are you brave enough?");
             System.out.println("Press Enter To Continue...");
             scanner.nextLine();
         }

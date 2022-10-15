@@ -32,7 +32,6 @@ public class RandomWalkMovement extends MovementBehavior {
     public void move(final Entity entity, final Dungeon dungeon) {
         // Find ArrayList of current room's exits
         Room currentRoom = entity.getLocation();
-        
         Collection<String> exitsCol = currentRoom.getExits().values();
         ArrayList<String> exits = new ArrayList<String>(exitsCol);
 
