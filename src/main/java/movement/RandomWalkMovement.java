@@ -1,6 +1,7 @@
 package movement;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 import dungeon.Dungeon;
@@ -31,7 +32,8 @@ public class RandomWalkMovement extends MovementBehavior {
     public void move(final Entity entity, final Dungeon dungeon) {
         // Find ArrayList of current room's exits
         Room currentRoom = entity.getLocation();
-        ArrayList<String> exits = currentRoom.getExits();
+        Collection<String> exitsCol = currentRoom.getExits().values();
+        ArrayList<String> exits = new ArrayList<String>(exitsCol);
 
         // Select one of the exit rooms by random number generation
         Random random = new Random();

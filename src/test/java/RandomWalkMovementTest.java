@@ -1,5 +1,7 @@
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.Assert;
 
 import dungeon.Dungeon;
@@ -27,7 +29,8 @@ public class RandomWalkMovementTest {
         Assert.assertNotEquals(oldRoom, newRoom);
 
         // check there is exit from oldRoom to newRoom
-        ArrayList<String> exits = oldRoom.getExits();
+        Collection<String> exitsCol = oldRoom.getExits().values();
+        ArrayList<String> exits = new ArrayList<String>(exitsCol);
         Assert.assertTrue(exits.contains(newRoom.getName()));
     }
 }

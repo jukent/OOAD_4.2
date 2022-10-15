@@ -1,13 +1,9 @@
-import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import dungeon.Dungeon;
 import dungeon.Room;
 import entity.Blinker;
-import entity.Brawler;
-import treasure.Portal;
 
 public class BlinkMovementTest {
 
@@ -29,34 +25,6 @@ public class BlinkMovementTest {
         blinker.move();
         Room newRoom = blinker.getLocation();
 
-        Assert.assertNotEquals(oldRoom, newRoom);
-    }
-
-
-    @Test
-    public void testCharacterBlink() {
-        Brawler character = new Brawler(0, dungeon, "");
-
-        Room oldRoom = character.getLocation();
-
-        Portal portal = new Portal(1, dungeon);
-        Assert.assertEquals("Portal", portal.getTreasureType());
-
-        character.addInventory(portal);
-        Assert.assertTrue(character.getInventory().contains(portal));
-
-        ArrayList<String> inventoryArray = new ArrayList<String>();
-        inventoryArray.add(portal.getTreasureType());
-        Assert.assertEquals(character.getInventoryTypes(), inventoryArray);
-        Assert.assertTrue(character.getInventoryTypes().
-            contains(portal.getTreasureType()));
-        Assert.assertTrue(character.getInventoryTypes().contains("Portal"));
-
-        character.checkPortalInInventory();
-        Assert.assertEquals("Blink", character.getMovementType());
-
-        character.move();
-        Room newRoom = character.getLocation();
         Assert.assertNotEquals(oldRoom, newRoom);
     }
 }
