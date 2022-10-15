@@ -386,6 +386,7 @@ public class GameEngine {
         Character character = tracker.getCharacterList().get(0);
         int health = character.getHealth();
         String room = character.getLocation().getName();
+        System.out.println("checking win condition " + room);
 
         // Change End Condition depending on the outcome
         if (health == 0) {
@@ -397,7 +398,7 @@ public class GameEngine {
             System.out.println("Lose. Adventurer defeated.");
             System.out.println("\n");
         }
-        if (room == "(0-1-1)" & roundCount != 0) {
+        if (room.equals("(0-1-1)")) {
             endCondition = false;
             System.out.println();
             System.out.print("Game Over: Round ");
