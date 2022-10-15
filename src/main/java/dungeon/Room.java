@@ -13,8 +13,9 @@ public class Room {
     private final int row; // The row coordinate for this room - Integer
     private final int column; // The column coordinates for this room - Integer
     private String name; // The name  of this room, i.e. "(2-0-0)" - String
-    private ArrayList<String> exits; // ArrayList of neighboring room names
-    // i.e. ["(2-1-0)","(2-0-1)"]
+    private HashMap<String, String> exits; // ArrayList of neighboring room names
+    // i.e. ["(2-1-0)","(2-0-1)"] 
+    // mapped to directions (NSEW, Up, Down, and Exit)
 
     private ArrayList<Character> charactersInRoom; // ArrayList of Character
     private ArrayList<Creature> creaturesInRoom; // ArrayList of Creature
@@ -52,7 +53,7 @@ public class Room {
 
         this.name = new String("(" + level + "-" + row + "-" + column + ")");
 
-        ArrayList<String> exits = findExits();
+        HashMap<String, String> exits = findExits();
         this.exits = exits;
 
 
@@ -73,13 +74,13 @@ public class Room {
 
 
     /**
-     * @return exits: ArrayList<String>
+     * @return exits: HashMap<String, String>
      * (cardinal directions, neighboring room names)
      *
      * Let other classess access a room's neighboring rooms
      * (and in what direction if we need that).
      */
-    public ArrayList<String> getExits() {
+    public HashMap<String, String> getExits() {
         return exits;
     }
 

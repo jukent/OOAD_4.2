@@ -1,6 +1,7 @@
 package movement;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 import dungeon.Dungeon;
@@ -34,7 +35,10 @@ public class SeekMovement extends MovementBehavior {
         Room currentRoom = entity.getLocation();
 
         // List of nearby rooms
-        ArrayList<String> exits = currentRoom.getExits();
+        Collection<String> exitsCol = currentRoom.getExits().values();
+        ArrayList<String> exits = new ArrayList<String>(exitsCol);
+        // Remove Starting Room so Creatures cannot exit the Dungeon
+        exits.remove("(0-1-1)");
 
         // Populate an ArrayList of populated nearby rooms (with characters)
         ArrayList<Room> populatedExits = new ArrayList<>();

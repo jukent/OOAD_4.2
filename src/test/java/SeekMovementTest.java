@@ -1,5 +1,7 @@
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.Assert;
 
 import dungeon.Dungeon;
@@ -64,7 +66,9 @@ public class SeekMovementTest {
         Assert.assertNotEquals(oldRoom, characterRoom);
 
         // check there is exit to characterRoom
-        ArrayList<String> exits = oldRoom.getExits();
+        
+        Collection<String> exitsCol = oldRoom.getExits().values();
+        ArrayList<String> exits = new ArrayList<String>(exitsCol);
         Assert.assertTrue(exits.contains(characterRoom.getName()));
 
         Tracker tracker = Tracker.getInstance();
