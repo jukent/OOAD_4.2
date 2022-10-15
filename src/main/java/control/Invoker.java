@@ -2,7 +2,6 @@ package control;
 import entity.*;
 import entity.Character;
 import game.GameEngine;
-import treasure.Treasure;
 import dungeon.*;
 import java.util.ArrayList;
 import java.util.Hashtable;

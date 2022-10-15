@@ -68,8 +68,9 @@ public class FleeCommand  extends Command {
                         .getRoom(movementOptions.get(choice));
                     characterRef.setLocation(newRoom);
                 }
-                gameRef.tracker.characterMoved(this.characterRef,
+                gameRef.tracker.characterFled(this.characterRef,
                     oldRoom, newRoom);
+                
             } else {
                 System.out.print("Try again...");
                 chosen = false;
