@@ -174,15 +174,17 @@ public class Printer {
      * This method prints Character stats: name, treausres, hp.
      */
     private void printCharacterStats() {
-        String tableHeader = new String("Adventurers\tHealth\tTreasure");
+        String tableHeader = new String("Adventurers\Class\tHealth\tTreasure");
         System.out.println(tableHeader);
         for (Character c: tracker.getCharacterList()) {
             String name = c.getName();
+            String title = c.getTitle();
             String treasureString = c.getInventoryString();
             Integer health = c.getHealth();
 
             String characterStats
-                = new String(name + "\t\t" + health + "\t" + treasureString);
+                = new String(name + "\t\t" + title + "\t"
+                    + health + "\t" + treasureString);
             System.out.println(characterStats);
         }
     }

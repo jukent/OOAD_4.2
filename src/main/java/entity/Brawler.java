@@ -25,8 +25,8 @@ public class Brawler extends Character {
         setSearchBehavior(new CarelessHuntBehavior());
         setHP(12);
         // SearchType is Careless
-        setName("Brawler"); // String name
-        setTitle(name);
+        setName(name); // String name
+        setTitle("Brawler");
         setType(EntityEnum.BRAWLER);
     }
 }

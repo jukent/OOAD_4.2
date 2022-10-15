@@ -23,8 +23,8 @@ public class Runner extends Character {
         setFightBehavior(new UntrainedFightBehavior()); // FightType is
         // Untrained
         setSearchBehavior(new QuickHuntBehavior()); // SearchType is Quick
-        setName("Runner"); // String name
-        setTitle(name);
+        setName(name); // String name
+        setTitle("Runner");
         setType(EntityEnum.RUNNER);
         setHP(10);
     }

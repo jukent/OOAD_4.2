@@ -21,8 +21,8 @@ public class Thief extends Character {
         setLocation(getDungeon().getRoom("(0-1-1)")); // Start in Entrance Room
         setFightBehavior(new TrainedFightBehavior()); // FightType is Trained
         setSearchBehavior(new CarefulHuntBehavior()); // SearhType is Careful
-        setName("Thief"); // String name
-        setTitle(name);
+        setName(name); // String name
+        setTitle("Thief");
         setType(EntityEnum.THIEF);
         setHP(10);
     }
