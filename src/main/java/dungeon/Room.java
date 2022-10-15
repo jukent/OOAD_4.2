@@ -13,8 +13,8 @@ public class Room {
     private final int row; // The row coordinate for this room - Integer
     private final int column; // The column coordinates for this room - Integer
     private String name; // The name  of this room, i.e. "(2-0-0)" - String
-    private HashMap<String, String> exits; // ArrayList of neighboring room names
-    // i.e. ["(2-1-0)","(2-0-1)"] 
+    private HashMap<String, String> exits; // ArrayList of neighboring
+    // room names i.e. ["(2-1-0)","(2-0-1)"]
     // mapped to directions (NSEW, Up, Down, and Exit)
 
     private ArrayList<Character> charactersInRoom; // ArrayList of Character

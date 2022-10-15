@@ -29,7 +29,6 @@ public class RandomWalkMovementTest {
         Assert.assertNotEquals(oldRoom, newRoom);
 
         // check there is exit from oldRoom to newRoom
-        
         Collection<String> exitsCol = oldRoom.getExits().values();
         ArrayList<String> exits = new ArrayList<String>(exitsCol);
         Assert.assertTrue(exits.contains(newRoom.getName()));

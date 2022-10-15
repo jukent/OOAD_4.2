@@ -66,7 +66,6 @@ public class SeekMovementTest {
         Assert.assertNotEquals(oldRoom, characterRoom);
 
         // check there is exit to characterRoom
-        
         Collection<String> exitsCol = oldRoom.getExits().values();
         ArrayList<String> exits = new ArrayList<String>(exitsCol);
         Assert.assertTrue(exits.contains(characterRoom.getName()));

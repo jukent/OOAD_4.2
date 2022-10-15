@@ -424,7 +424,7 @@ public final class Tracker {
 
         // Add character to new room occupancy
         publishCharacterEntersRoom(character, newRoom);
-        
+
         String moveStr = character.getName() + " moved to room "
             + newRoom.getName();
         System.out.println(moveStr);

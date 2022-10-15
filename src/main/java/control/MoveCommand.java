@@ -56,7 +56,7 @@ public class MoveCommand  extends Command {
             ArrayList<String> directions = new ArrayList<String>();
             Collections.addAll(directions, "North", "South", "East", "West",
                 "Up", "Down", "Exit");
-            int i =0;
+            int i = 0;
             for (String direction: directions) {
                 if (exits.keySet().contains(direction)) {
                     System.out.println(String.valueOf(i + 1)
