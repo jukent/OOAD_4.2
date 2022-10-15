@@ -174,7 +174,8 @@ public class Printer {
      * This method prints Character stats: name, treausres, hp.
      */
     private void printCharacterStats() {
-        String tableHeader = new String("Adventurers\Class\tHealth\tTreasure");
+        String tableHeader
+            = new String("Adventurers\tClass\tHealth\tTreasure");
         System.out.println(tableHeader);
         for (Character c: tracker.getCharacterList()) {
             String name = c.getName();
