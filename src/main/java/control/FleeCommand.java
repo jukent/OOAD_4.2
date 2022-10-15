@@ -70,7 +70,7 @@ public class FleeCommand  extends Command {
                 }
                 gameRef.tracker.characterFled(this.characterRef,
                     oldRoom, newRoom);
-                
+
             } else {
                 System.out.print("Try again...");
                 chosen = false;
