@@ -6,6 +6,8 @@ import movement.BlinkMovement;
 import java.util.Scanner;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 public class FleeCommand  extends Command {
@@ -43,17 +45,25 @@ public class FleeCommand  extends Command {
             movementOptions.clear();
             System.out.println();
             System.out.println("Movement Options:");
-            ArrayList<String> exits = currentRoom.getExits();
+            HashMap<String, String> exits = currentRoom.getExits();
 
             if (characterRef.checkPortalInInventory()) {
                 System.out.println(String.valueOf(0)
                     + ": Portal (random room)");
                 movementOptions.put(0, "Blink");
             }
-            for (int i = 0; i < exits.size(); i++) {
-                System.out.println(String.valueOf(i + 1)
-                    + ": " + exits.get(i));
-                movementOptions.put(i + 1, exits.get(i));
+            // Want Movement options to be displayed in a predictable order
+            ArrayList<String> directions = new ArrayList<String>();
+            Collections.addAll(directions, "North", "South", "East", "West",
+                "Up", "Down", "Exit");
+            int i = 0;
+            for (String direction: directions) {
+                if (exits.keySet().contains(direction)) {
+                    System.out.println(String.valueOf(i + 1)
+                        + ": " + direction);
+                    movementOptions.put(i + 1, exits.get(direction));
+                    i++;
+                }
             }
 
             System.out.print("Select a direction: ");
