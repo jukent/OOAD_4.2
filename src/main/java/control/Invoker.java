@@ -2,7 +2,6 @@ package control;
 import entity.*;
 import entity.Character;
 import game.GameEngine;
-import treasure.Treasure;
 import dungeon.*;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -15,6 +14,7 @@ public class Invoker {
     private FightCommand fightCommand;
     private SearchCommand searchCommand;
     private CelebrateCommand celebrateCommand;
+    private FleeCommand fleeCommand;
     private Hashtable<Integer, Command> remote
         = new Hashtable<Integer, Command>();
 
@@ -32,6 +32,7 @@ public class Invoker {
         fightCommand = new FightCommand(characterRef, gameRef);
         searchCommand = new SearchCommand(characterRef, gameRef);
         celebrateCommand = new CelebrateCommand(characterRef, gameRef);
+        fleeCommand = new FleeCommand(characterRef, gameRef);
     }
 
     /**
@@ -40,6 +41,7 @@ public class Invoker {
     public void controlSequence() {
         int moveCount = 0;
         int exitChoice = 0;
+        int treasureAttempt = 0;
         int playerChoice = 0;
         boolean roundCompleted = false;
         Scanner input = gameRef.getPrinter().scanner;
@@ -52,27 +54,36 @@ public class Invoker {
             Room currentRoom = this.characterRef.getLocation();
             ArrayList<Creature> creaturesInRoom
                 = currentRoom.getCreaturesInRoom();
-            ArrayList<Treasure> treasuresInRoom
-                = currentRoom.getTreasuresInRoom();
 
             System.out.println();
             System.out.println(this.characterRef.getTitle() + " options: ");
-            if (moveCount < this.characterRef.getMoveCount()) {
-                System.out.println(String.valueOf(choiceNum) + ": Move");
-                remote.put(choiceNum, moveCommand);
-                moveChoice = choiceNum;
-                choiceNum += 1;
-            }
-            if (treasuresInRoom.size() > 0) {
+            while (treasureAttempt == 0) {
+                // Can only search for treasure once per turn,
+                // either current room or in new room
                 System.out.println(String.valueOf(choiceNum)
                     + ": Search for Treasure");
                 remote.put(choiceNum, searchCommand);
                 choiceNum += 1;
+                treasureAttempt++;
             }
             if (creaturesInRoom.size() > 0) {
                 System.out.println(String.valueOf(choiceNum)
                     + ": Fight Monsters");
                 remote.put(choiceNum, fightCommand);
+                choiceNum += 1;
+
+                if (moveCount < this.characterRef.getMoveCount()) {
+                    System.out.println(String.valueOf(choiceNum) + ": Flee");
+                    remote.put(choiceNum, fleeCommand);
+                    moveChoice = choiceNum;
+                    choiceNum += 1;
+                } else {
+                    System.out.println("Cannot Flee");
+                }
+            } else if (moveCount < this.characterRef.getMoveCount()) {
+                System.out.println(String.valueOf(choiceNum) + ": Move");
+                remote.put(choiceNum, moveCommand);
+                moveChoice = choiceNum;
                 choiceNum += 1;
             }
             System.out.println(String.valueOf(choiceNum) + ": PARTY!!!!");
@@ -89,7 +100,7 @@ public class Invoker {
 
             if (playerChoice == exitChoice) {
                 roundCompleted = true;
-                System.out.println("We ended the turn");
+                System.out.println("Turn ended.");
             } else if (remote.containsKey(playerChoice)) {
                 remote.get(playerChoice).execute();
                 if (playerChoice == moveChoice) {

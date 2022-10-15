@@ -432,6 +432,25 @@ public final class Tracker {
 
 
     /**
+     * @param character Character
+     * @param oldRoom Room
+     * @param newRoom Room
+     *
+     * Published even that a Character has moved.
+     *
+     * Tracker lets Room subscribers know of new occupancy.
+     */
+    public void characterFled(final Character character,
+        final Room oldRoom, final Room newRoom) {
+            characterMoved(character, oldRoom, newRoom);
+
+            if (character.getTitle() != "Runner") {
+                character.loseHealth(1);
+            }
+    }
+
+
+    /**
      * @param creature Creature
      * @param oldRoom Room
      * @param newRoom Room
