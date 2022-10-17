@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.json.simple.JSONObject;
+import com.google.gson.*;
 
 import entity.Creature;
 import treasure.Treasure;
@@ -137,14 +137,15 @@ public final class Logger {
             logDict.put("Character", getCharacterDict());
             logDict.put("Creatures", getCreatureDict());
 
-            JSONObject jsonLog = new JSONObject(logDict);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String prettyJsonString = gson.toJson(logDict);
             try {
                 String roundCountPadded = String.format("%03d", roundCount);
                 String fileName
                     = new String("Logger-files/Logger-"
                     + roundCountPadded + ".json");
                 FileWriter fileWriter = new FileWriter(fileName);
-                fileWriter.write(jsonLog.toJSONString());
+                fileWriter.write(prettyJsonString);
                 fileWriter.close();
             } catch (IOException e) {
                 System.out.println("An error occurred. Could not write file.");
