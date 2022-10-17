@@ -10,6 +10,7 @@ import entity.*;
 import entity.Character;
 import fight.FightBehavior;
 import treasure.*;
+import movement.BlinkMovement;
 
 public class GameEngine {
 
@@ -234,8 +235,9 @@ public class GameEngine {
         int neededScore = character.getSearchBehavior().getNeededScore();
         int score = character.searchTreasure();
 
+        Room treasureRoom = character.getLocation();
         ArrayList<Treasure> treasureInRoom
-            = character.getLocation().getTreasuresInRoom();
+            = treasureRoom.getTreasuresInRoom();
         if (!treasureInRoom.isEmpty()) {
             // If there is Treasure in the room
             if (score >= neededScore) {
@@ -270,6 +272,13 @@ public class GameEngine {
                     character.addHealth(currentItem.getHPBoost());
                     // Publish Treasure found to Tracker
                     tracker.treasureFound(character, currentItem, score);
+                    if (currentItem.getTreasureType() == "Portal") {
+                        // Add immediate portal somewhere new
+                        BlinkMovement portalMovement = new BlinkMovement();
+                        portalMovement.move(character, dungeon);
+                        Room newRoom = character.getLocation();
+                        tracker.characterMoved(character, treasureRoom, newRoom);
+                    }
                 }
             } else {
                 // If Treasure not found
