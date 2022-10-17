@@ -314,16 +314,23 @@ public class GameEngine {
         }
 
         // Process Creatures
-        for (int i = 0; i < creatureList.size(); i++) {
-            // Changing to this type of loop to avoid comodification
-            Creature creature = creatureList.get(i);
-            if (endCondition) {
-                // Stops processing Creatures if end condition is met
-                process1Creature(creature);
-                checkWinCondition();
-            } else {
-                break;
-            }
+        if (endCondition) {
+            // Makes it so "Creature Turn" doesn't print after game over.
+            System.out.println("");
+            System.out.println("------------------------------------------------");
+            System.out.println("");
+            System.out.println("Creature Turn");
+            for (int i = 0; i < creatureList.size(); i++) {
+                Creature creature = creatureList.get(i);
+                if (endCondition) {
+                    // Stops processing Creatures if end condition is met
+                    process1Creature(creature);
+                    checkWinCondition();
+                } else {
+                    break;
+                }
+            } 
+            System.out.println("Turn ended.");
         }
         printer.printPause();
         logger.logRound();

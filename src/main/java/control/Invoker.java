@@ -46,6 +46,9 @@ public class Invoker {
         boolean roundCompleted = false;
         Scanner input = gameRef.getPrinter().scanner;
         remote.clear();
+        System.out.println("");
+        System.out.println("------------------------------------------------");
+        System.out.println("");
         System.out.println("New Turn");
 
         while (!roundCompleted) {
