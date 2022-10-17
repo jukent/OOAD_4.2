@@ -52,6 +52,7 @@ public class Invoker {
         System.out.println("New Turn");
 
         while (!roundCompleted) {
+            int round = gameRef.tracker.getRoundCount();
             int choiceNum = 1;
             int moveChoice = 0;
             Room currentRoom = this.characterRef.getLocation();
@@ -60,42 +61,48 @@ public class Invoker {
 
             System.out.println();
             System.out.println(this.characterRef.getTitle() + " options: ");
-            while (treasureAttempt == 0) {
-                // Can only search for treasure once per turn,
-                // either current room or in new room
-                System.out.println(String.valueOf(choiceNum)
-                    + ": Search for Treasure");
-                remote.put(choiceNum, searchCommand);
-                choiceNum += 1;
-                treasureAttempt++;
-            }
-            if (creaturesInRoom.size() > 0) {
-                System.out.println(String.valueOf(choiceNum)
-                    + ": Fight Monsters");
-                remote.put(choiceNum, fightCommand);
-                choiceNum += 1;
-
-                if (moveCount < this.characterRef.getMoveCount()) {
-                    System.out.println(String.valueOf(choiceNum) + ": Flee");
-                    remote.put(choiceNum, fleeCommand);
-                    moveChoice = choiceNum;
-                    choiceNum += 1;
-                } else {
-                    System.out.println("Cannot Flee");
-                }
-            } else if (moveCount < this.characterRef.getMoveCount()) {
-                System.out.println(String.valueOf(choiceNum) + ": Move");
+            if (round == 1 && moveCount == 0) {
+                System.out.println(String.valueOf(choiceNum) + ": Enter");
                 remote.put(choiceNum, moveCommand);
                 moveChoice = choiceNum;
+            } else {
+                while (treasureAttempt == 0) {
+                    // Can only search for treasure once per turn,
+                    // either current room or in new room
+                    System.out.println(String.valueOf(choiceNum)
+                        + ": Search for Treasure");
+                    remote.put(choiceNum, searchCommand);
+                    choiceNum += 1;
+                    treasureAttempt++;
+                }
+                if (creaturesInRoom.size() > 0) {
+                    System.out.println(String.valueOf(choiceNum)
+                        + ": Fight Monsters");
+                    remote.put(choiceNum, fightCommand);
+                    choiceNum += 1;
+
+                    if (moveCount < this.characterRef.getMoveCount()) {
+                        System.out.println(String.valueOf(choiceNum) + ": Flee");
+                        remote.put(choiceNum, fleeCommand);
+                        moveChoice = choiceNum;
+                        choiceNum += 1;
+                    } else {
+                        System.out.println("Cannot Flee");
+                    }
+                } else if (moveCount < this.characterRef.getMoveCount()) {
+                    System.out.println(String.valueOf(choiceNum) + ": Move");
+                    remote.put(choiceNum, moveCommand);
+                    moveChoice = choiceNum;
+                    choiceNum += 1;
+                }
+                System.out.println(String.valueOf(choiceNum) + ": PARTY!!!!");
+                remote.put(choiceNum, celebrateCommand);
+                choiceNum += 1;
+
+                System.out.println(String.valueOf(choiceNum) + ": End Turn");
+                exitChoice = choiceNum;
                 choiceNum += 1;
             }
-            System.out.println(String.valueOf(choiceNum) + ": PARTY!!!!");
-            remote.put(choiceNum, celebrateCommand);
-            choiceNum += 1;
-
-            System.out.println(String.valueOf(choiceNum) + ": End Turn");
-            exitChoice = choiceNum;
-            choiceNum += 1;
 
             System.out.print("Your choice: ");
             String nextline = input.nextLine();
