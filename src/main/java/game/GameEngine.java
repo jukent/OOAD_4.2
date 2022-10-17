@@ -392,13 +392,9 @@ public class GameEngine {
         // Instead of multiple traps increasing the count
         int treasureCount = tracker.getTreasureList().size();
         int creatureCount = tracker.getCreatureList().size();
-        Character character = tracker.getCharacterList().get(0);
-        int health = character.getHealth();
-        String room = character.getLocation().getName();
-        System.out.println("checking win condition " + room);
+        int characterCount = tracker.getCharacterList().size();
 
-        // Change End Condition depending on the outcome
-        if (health == 0) {
+        if (characterCount == 0) {
             //Character defeated
             endCondition = false;
             System.out.println();
@@ -406,28 +402,31 @@ public class GameEngine {
             System.out.println(roundCount);
             System.out.println("Lose. Adventurer defeated.");
             System.out.println("\n");
-        }
-        if (room.equals("(0-1-1)")) {
-            endCondition = false;
-            System.out.println();
-            System.out.print("Game Over: Round ");
-            System.out.println(roundCount);
-            if (treasureCount == NUMTREASURETYPES & creatureCount <= 0) {
-                System.out.println("Above and beyond Victory! "
-                    + "All treasure found and all creatures defeated!");
-                System.out.println("\n");
-            } else if (treasureCount == NUMTREASURETYPES) {
-                System.out.println("Win! All treasure found!");
-                System.out.println("\n");
-            } else if (creatureCount <= 0) {
-                System.out.println("Win! All creatures eliminated!");
-                System.out.println("\n");
-            } else {
-                System.out.println("Lose. You failed to complete the quest.");
-                System.out.println("\n");
-            }
         } else {
-            endCondition = true;
+            Character character = tracker.getCharacterList().get(0);
+            String room = character.getLocation().getName();
+            if (room.equals("(0-1-1)")) {
+                endCondition = false;
+                System.out.println();
+                System.out.print("Game Over: Round ");
+                System.out.println(roundCount);
+                if (treasureCount == NUMTREASURETYPES & creatureCount <= 0) {
+                    System.out.println("Above and beyond Victory! "
+                        + "All treasure found and all creatures defeated!");
+                    System.out.println("\n");
+                } else if (treasureCount == NUMTREASURETYPES) {
+                    System.out.println("Win! All treasure found!");
+                    System.out.println("\n");
+                } else if (creatureCount <= 0) {
+                    System.out.println("Win! All creatures eliminated!");
+                    System.out.println("\n");
+                } else {
+                    System.out.println("Lose. You failed to complete the quest.");
+                    System.out.println("\n");
+                }
+            } else {
+                endCondition = true;
+            }
         }
         if (!endCondition) {
             try {
