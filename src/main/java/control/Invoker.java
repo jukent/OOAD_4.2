@@ -47,7 +47,7 @@ public class Invoker {
         Scanner input = gameRef.getPrinter().scanner;
         remote.clear();
         System.out.println("");
-        System.out.println("------------------------------------------------");
+        System.out.println("--------------------------------------------");
         System.out.println("");
         System.out.println("New Turn");
 
@@ -82,7 +82,8 @@ public class Invoker {
                     choiceNum += 1;
 
                     if (moveCount < this.characterRef.getMoveCount()) {
-                        System.out.println(String.valueOf(choiceNum) + ": Flee");
+                        System.out.println(String.valueOf(choiceNum)
+                            + ": Flee");
                         remote.put(choiceNum, fleeCommand);
                         moveChoice = choiceNum;
                         choiceNum += 1;

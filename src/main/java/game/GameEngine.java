@@ -277,7 +277,8 @@ public class GameEngine {
                         BlinkMovement portalMovement = new BlinkMovement();
                         portalMovement.move(character, dungeon);
                         Room newRoom = character.getLocation();
-                        tracker.characterMoved(character, treasureRoom, newRoom);
+                        tracker.characterMoved(character, treasureRoom,
+                            newRoom);
                     }
                 }
             } else {
@@ -317,7 +318,7 @@ public class GameEngine {
         if (endCondition) {
             // Makes it so "Creature Turn" doesn't print after game over.
             System.out.println("");
-            System.out.println("------------------------------------------------");
+            System.out.println("--------------------------------------------");
             System.out.println("");
             System.out.println("Creature Turn");
             for (int i = 0; i < creatureList.size(); i++) {
@@ -329,7 +330,7 @@ public class GameEngine {
                 } else {
                     break;
                 }
-            } 
+            }
             System.out.println("Turn ended.");
         }
         printer.printPause();
@@ -428,7 +429,8 @@ public class GameEngine {
                     System.out.println("Win! All creatures eliminated!");
                     System.out.println("\n");
                 } else {
-                    System.out.println("Lose. You failed to complete the quest.");
+                    System.out.println("Lose. "
+                        + "You failed to complete the quest.");
                     System.out.println("\n");
                 }
             } else {
