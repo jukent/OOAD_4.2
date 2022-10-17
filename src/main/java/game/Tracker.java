@@ -446,6 +446,10 @@ public final class Tracker {
 
             if (character.getTitle() != "Runner") {
                 character.loseHealth(1);
+
+                if (character.getHealth() == 0) {
+                    Tracker.characterList.remove(character);
+                }
             }
     }
 

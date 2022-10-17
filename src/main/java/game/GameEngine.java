@@ -273,7 +273,7 @@ public class GameEngine {
                     // Publish Treasure found to Tracker
                     tracker.treasureFound(character, currentItem, score);
                     if (currentItem.getTreasureType() == "Portal") {
-                        // Add immediate portal somewhere new
+                        // Immediate portal somewhere new
                         BlinkMovement portalMovement = new BlinkMovement();
                         portalMovement.move(character, dungeon);
                         Room newRoom = character.getLocation();
