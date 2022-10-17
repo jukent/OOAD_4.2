@@ -174,15 +174,18 @@ public class Printer {
      * This method prints Character stats: name, treausres, hp.
      */
     private void printCharacterStats() {
-        String tableHeader = new String("Adventurers\tDamage\tTreasure");
+        String tableHeader
+            = new String("Adventurers\tClass\tHealth\tTreasure");
         System.out.println(tableHeader);
         for (Character c: tracker.getCharacterList()) {
             String name = c.getName();
+            String title = c.getTitle();
             String treasureString = c.getInventoryString();
-            Integer damage = c.getHealth();
+            Integer health = c.getHealth();
 
             String characterStats
-                = new String(name + "\t\t" + damage + "\t" + treasureString);
+                = new String(name + "\t\t" + title + "\t"
+                    + health + "\t" + treasureString);
             System.out.println(characterStats);
         }
     }
@@ -298,6 +301,16 @@ public class Printer {
     public void printStartingScreen() {
         if (outputType != "ShowNone") {
             System.out.println("Starting Game!");
+            System.out.println("Welcome to Raiders of the Lost Arctangent");
+
+            System.out.println("You are a brave adventurer about to explore a "
+                + "dungeon that contains numerous perils.");
+            System.out.println("Once you have found the 6 treasures (Armor, "
+                + "Gem, Portal, Potion, Sword, and Trap) or defeated all of "
+                + "the creatures, you may leave victorious!");
+            System.out.println("If you leave the dungeon too soon, you will be "
+                + "branded a coward and a loser.");
+            System.out.println("Are you brave enough?");
             System.out.println("Press Enter To Continue...");
             scanner.nextLine();
         }

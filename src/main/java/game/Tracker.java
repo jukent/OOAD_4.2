@@ -424,6 +424,29 @@ public final class Tracker {
 
         // Add character to new room occupancy
         publishCharacterEntersRoom(character, newRoom);
+
+        String moveStr = character.getName() + " moved to room "
+            + newRoom.getName();
+        System.out.println(moveStr);
+    }
+
+
+    /**
+     * @param character Character
+     * @param oldRoom Room
+     * @param newRoom Room
+     *
+     * Published even that a Character has moved.
+     *
+     * Tracker lets Room subscribers know of new occupancy.
+     */
+    public void characterFled(final Character character,
+        final Room oldRoom, final Room newRoom) {
+            characterMoved(character, oldRoom, newRoom);
+
+            if (character.getTitle() != "Runner") {
+                character.loseHealth(1);
+            }
     }
 
 

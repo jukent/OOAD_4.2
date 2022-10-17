@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 
-public class MoveCommand  extends Command {
+public class FleeCommand  extends Command {
     private Hashtable<Integer, String> movementOptions
         = new Hashtable<Integer, String>();
     private BlinkMovement portalMovement = new BlinkMovement();
@@ -20,9 +20,9 @@ public class MoveCommand  extends Command {
      * @param characterRef Character
      * @param gameRef GameEngine
      *
-     * Constructor for the Move Command.
+     * Constructor for the Flee Command.
      */
-    MoveCommand(final Character characterRef, final GameEngine gameRef) {
+    FleeCommand(final Character characterRef, final GameEngine gameRef) {
         super(characterRef, gameRef);
     }
 
@@ -30,7 +30,7 @@ public class MoveCommand  extends Command {
     /* (non-Javadoc)
      * @see control.Command#execute()
      *
-     * Executes the Move Command.
+     * Executes the Flee Command.
      */
     @Override
     public void execute() {
@@ -78,8 +78,9 @@ public class MoveCommand  extends Command {
                         .getRoom(movementOptions.get(choice));
                     characterRef.setLocation(newRoom);
                 }
-                gameRef.tracker.characterMoved(this.characterRef,
+                gameRef.tracker.characterFled(this.characterRef,
                     oldRoom, newRoom);
+
             } else {
                 System.out.print("Try again...");
                 chosen = false;

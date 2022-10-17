@@ -21,8 +21,8 @@ public class Sneaker extends Character {
         setLocation(getDungeon().getRoom("(0-1-1)")); // Begin in Entrance Room
         setFightBehavior(new StealthyFightBehavior()); // FightType is Stealthy
         setSearchBehavior(new QuickHuntBehavior()); // SearchType is Quick
-        setName("Sneaker"); // Sring name
-        setTitle(name);
+        setName(name); // Sring name
+        setTitle("Sneaker");
         setType(EntityEnum.SNEAKER);
         setHP(8);
     }
