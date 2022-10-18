@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,6 +29,7 @@ public class Plotter {
      *  - the number of treasures found
      *  - the character damage
      */
+    @SuppressWarnings("all")
     private HashMap<String, ArrayList<Integer>> readLoggerFiles() {
         ArrayList<Integer> rounds = new ArrayList<Integer>();
         ArrayList<Integer> numCreatures = new ArrayList<Integer>();
@@ -41,7 +43,8 @@ public class Plotter {
             JSONParser parser = new JSONParser();
             try {
                 Object obj
-                    = parser.parse(new FileReader(loggerFile.toString()));
+                    = parser.parse(new FileReader(loggerFile.toString(),
+                    Charset.forName("utf-8")));
                 JSONObject jsonObject = (JSONObject) obj;
 
                 String roundStr = String.valueOf(jsonObject.get("Turn"));
