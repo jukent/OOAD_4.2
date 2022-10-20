@@ -6,7 +6,7 @@ import dungeon.Dungeon;
 
 public class ThiefFactory extends CharacterFactory {
 
-    
+
     //Factory Pattern Subclasses
     /**
      * @param dungeonRef Dungeon
@@ -21,7 +21,7 @@ public class ThiefFactory extends CharacterFactory {
     /* (non-Javadoc)
      * @see factories.CharacterFactory#spawnCharacter(java.lang.String)
      */
-    public Character spawnCharacter(String name)  {
+    public Character spawnCharacter(final String name)  {
         return new Thief(this.id, this.dungeon, name);
     }
 }

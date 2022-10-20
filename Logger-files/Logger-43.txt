@@ -1,9 +1,0 @@
-Tracker: Turn 43
-
-Adventurers	Room	Damage	Treasure
-Brawler		(3-0-1)	1		Gem, Armor, Portal, Sword
-
-Total Active Creatures: 1
-
-Creatures	Room
-Orbiter		(3-0-0)

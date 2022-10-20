@@ -21,7 +21,7 @@ public class OrbiterFactory extends CreatureFactory {
     /* (non-Javadoc)
      * @see factories.CreatureFactory#spawnCreature()
      */
-    public Creature spawnCreature(){
+    public Creature spawnCreature() {
         return new Orbiter(this.id, this.dungeon);
     }
 }

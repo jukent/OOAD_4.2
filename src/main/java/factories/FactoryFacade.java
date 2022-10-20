@@ -10,13 +10,13 @@ import entity.CreatureEnum;
 
 
 public class FactoryFacade {
-    CreatureFactory BlinkerFact;
-    CreatureFactory SeekerFact;
-    CreatureFactory OrbiterFact;
-    CharacterFactory BrawlerFact;
-    CharacterFactory RunnerFact;
-    CharacterFactory ThiefFact;
-    CharacterFactory SneakerFact;
+    CreatureFactory blinkerFact;
+    CreatureFactory seekerFact;
+    CreatureFactory orbiterFact;
+    CharacterFactory brawlerFact;
+    CharacterFactory runnerFact;
+    CharacterFactory thiefFact;
+    CharacterFactory sneakerFact;
     Dungeon dungeonRef;
 
 
@@ -26,15 +26,15 @@ public class FactoryFacade {
      *
      * Facade for the factories.
      */
-    public FactoryFacade(Dungeon dungeon){
+    public FactoryFacade(final Dungeon dungeon) {
         dungeonRef = dungeon;
-        BlinkerFact = new BlinkerFactory(dungeon);
-        SeekerFact = new SeekerFactory(dungeon);
-        OrbiterFact = new OrbiterFactory(dungeon);
-        BrawlerFact = new BrawlerFactory(dungeon);
-        RunnerFact = new RunnerFactory(dungeon);
-        ThiefFact = new ThiefFactory(dungeon);
-        SneakerFact = new SneakerFactory(dungeon);
+        blinkerFact = new BlinkerFactory(dungeon);
+        seekerFact = new SeekerFactory(dungeon);
+        orbiterFact = new OrbiterFactory(dungeon);
+        brawlerFact = new BrawlerFactory(dungeon);
+        runnerFact = new RunnerFactory(dungeon);
+        thiefFact = new ThiefFactory(dungeon);
+        sneakerFact = new SneakerFactory(dungeon);
     }
 
 
@@ -45,19 +45,20 @@ public class FactoryFacade {
      *
      * Spawns a Character.
      */
-    public Character spawnCharacter(CharacterEnum type, String name) {
-        switch (type) {
-            case BRAWLER:
-                return BrawlerFact.spawnCharacter(name);
-            case RUNNER:
-                return RunnerFact.spawnCharacter(name);
-            case THIEF:
-                return ThiefFact.spawnCharacter(name);
-            case SNEAKER:
-                return SneakerFact.spawnCharacter(name);
-            default:
-                return BrawlerFact.spawnCharacter(name);
-        }
+    public Character spawnCharacter(final CharacterEnum type,
+        final String name) {
+            switch (type) {
+                case BRAWLER:
+                    return brawlerFact.spawnCharacter(name);
+                case RUNNER:
+                    return runnerFact.spawnCharacter(name);
+                case THIEF:
+                    return thiefFact.spawnCharacter(name);
+                case SNEAKER:
+                    return sneakerFact.spawnCharacter(name);
+                default:
+                    return brawlerFact.spawnCharacter(name);
+            }
     }
 
 
@@ -67,16 +68,16 @@ public class FactoryFacade {
      *
      * Spawns a Creature.
      */
-    public Creature spawnCreature(CreatureEnum type) {
-        switch(type) {
+    public Creature spawnCreature(final CreatureEnum type) {
+        switch (type) {
             case ORBITER:
-                return OrbiterFact.spawnCreature();
+                return orbiterFact.spawnCreature();
             case SEEKER:
-                return SeekerFact.spawnCreature();
+                return seekerFact.spawnCreature();
             case BLINKER:
-                return BlinkerFact.spawnCreature();
+                return blinkerFact.spawnCreature();
             default:
-                return BlinkerFact.spawnCreature();
+                return blinkerFact.spawnCreature();
         }
     }
 
@@ -87,16 +88,17 @@ public class FactoryFacade {
      *
      * Spawns the Creatures.
      */
-    public ArrayList<Creature> spawnCreatureSet(int copies) {
+    public ArrayList<Creature> spawnCreatureSet(
+        final int copies) {
 
-        ArrayList<Creature> tempList = new ArrayList<Creature>();
+            ArrayList<Creature> tempList = new ArrayList<Creature>();
 
-        for (int i = 0; i < copies; i++) {
-            tempList.add(spawnCreature(CreatureEnum.ORBITER));
-            tempList.add(spawnCreature(CreatureEnum.SEEKER));
-            tempList.add(spawnCreature(CreatureEnum.BLINKER));
-        }
+            for (int i = 0; i < copies; i++) {
+                tempList.add(spawnCreature(CreatureEnum.ORBITER));
+                tempList.add(spawnCreature(CreatureEnum.SEEKER));
+                tempList.add(spawnCreature(CreatureEnum.BLINKER));
+            }
 
-        return tempList;
+            return tempList;
     }
 }

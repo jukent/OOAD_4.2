@@ -12,7 +12,7 @@ public class BlinkerFactory extends CreatureFactory {
      *
      * Constructor for the Blinker factory.
      */
-     public BlinkerFactory(final Dungeon dungeonRef){
+     public BlinkerFactory(final Dungeon dungeonRef) {
         super(dungeonRef);
     }
 
