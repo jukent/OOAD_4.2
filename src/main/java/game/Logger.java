@@ -11,10 +11,20 @@ import entity.Creature;
 import treasure.Treasure;
 import entity.Character;
 
+// Example of Lazy Singleton Pattern
+// The Logger has a private constructor and can be accessed via a
+// `getInstance()` method to ensure that there is only one Logger
+// holding information of the game data even though it is called
+// every turn.
+// This is a Lazy Singleton pattern because the Logger isn't created
+// until the first time `getInstance()` is called. This is why there is
+// an if-check to see if the Logger already exists before the return
+// in the `getInstance()` method.
+
 
 // Example of Observer Pattern
 
-// Logger Class to be instantiated at the beginning of each full
+// Logger Class to be called at the beginning of each full
 // adventurer/creature turn (not individual)
 // and closes at the end of each turn.
 // Logs results to "Logger-n.txt" where n is the turn of the simulation.

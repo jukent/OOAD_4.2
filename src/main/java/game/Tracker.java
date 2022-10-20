@@ -10,6 +10,15 @@ import entity.Character;
 import treasure.Treasure;
 import util.DiceRolls;
 
+// Example of Eager Singleton pattern.
+// The Tracker has a private constructor and can be accessed via a
+// `getInstance()` method to ensure that there is only one Tracker
+// holding information of the game data. No other Tracker's can be made.
+// This is an example of Eager Singleton because the Tracker is 
+// instantiated ASAP and the `getInstance` method is simply a return.
+// This works for our purposes but could pose challenges if there were
+// multithreading.
+
 // Example of Observer pattern.
 // This Tracker is instantiated at beginning of game and active till end.
 // It subscribes for the following published events
