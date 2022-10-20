@@ -56,13 +56,16 @@ Each turn you will be asked to chose a command for the adventurer (Fight, Move, 
 
 **Command Pattern**
 
+The Command pattern is used to control the character. Each command such as the move, flee, celebrate, search for treasure, and fight inherit from a general command abstract class. The Invoker, contains all the logic for the player interacting with the game and choosing actions for the character. Each execute function is responsible for gathering the players input to turn into a command that goes to the main game engine. The game engine acts as the reciever, and the character at times also acts as the reciever. 
+
 **Singleton Pattern**
 
 **Factory Pattern**
+The factory pattern was implemented in the character and creature spawning. Each factory such as creature factory and character factory have a method labeled CharacterFactory and Creature Factory. These could have been extended from an EntityFactory, but we ran into some inheritance and polymorphism issues when using this (especially with array lists). Each character and creature type has a subclassed factory. A Facade pattern holds a reference to every subclassed factory, and is an easy way to spawn in characters and creatures.
 
 ## Changes to UML Diagram
 
-...
+Changes from the UML class diagram from 4.1 shows that the factory implementation is now shown correctly, but due to the amount of subclasses of factories, a facade was implemented to deal with the complicated nature of spawning in creatures and characters. 
 
 ## Assumptions Made
 
