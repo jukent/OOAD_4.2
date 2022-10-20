@@ -100,28 +100,25 @@ public class GameEngine {
             System.out.println("Enter your character type "
                 + "(Brawler, Thief, Sneaker, Runner): ");
             String stringtype = scanner.nextLine().toUpperCase();
-            System.out.println("Enter your name: ");
-            name = scanner.nextLine();
-
             if (stringtype.equals("BRAWLER")) {
                 type = EntityEnum.BRAWLER;
                 nameVal = false;
-            }
-            if (stringtype.equals("THIEF")) {
+            } else if (stringtype.equals("THIEF")) {
                 type = EntityEnum.THIEF;
                 nameVal = false;
-            }
-            if (stringtype.equals("SNEAKER")) {
+            } else if (stringtype.equals("SNEAKER")) {
                 type = EntityEnum.SNEAKER;
                 nameVal = false;
-            }
-            if (stringtype.equals("RUNNER")) {
+            } else if (stringtype.equals("RUNNER")) {
                 type = EntityEnum.RUNNER;
                 nameVal = false;
             } else {
                 System.out.println("Try again");
                 System.out.println();
             }
+
+            System.out.println("Enter your name: ");
+            name = scanner.nextLine();
         }
 
         // Characters
