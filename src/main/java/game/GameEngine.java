@@ -11,7 +11,6 @@ import entity.Character;
 import factories.FactoryFacade;
 import fight.FightBehavior;
 import treasure.*;
-import factories.FactoryFacade;
 import movement.BlinkMovement;
 
 public class GameEngine {
