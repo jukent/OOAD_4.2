@@ -22,7 +22,7 @@ public class BrawlerFactory extends CharacterFactory {
     /* (non-Javadoc)
      * @see factories.CharacterFactory#spawnCharacter(java.lang.String)
      */
-    public Character spawnCharacter(String name) {
+    public Character spawnCharacter(final String name) {
         return new Brawler(this.id, this.dungeon, name);
     }
 }
