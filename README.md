@@ -51,7 +51,7 @@ Each turn you will be asked to chose a command for the adventurer (Fight, Move, 
 
 ## Results
 
-Results from a run are shown in the ['SingleGameRun.txt`](https://github.com/jukent/OOAD_4.2/blob/main/SingleGameRun.txt) file and the [Logger files folder](https://github.com/jukent/OOAD_4.2/blob/main/Logger-files/).
+Results from a run are shown in the [`SingleGameRun.txt`](https://github.com/jukent/OOAD_4.2/blob/main/SingleGameRun.txt) file and the [Logger files folder](https://github.com/jukent/OOAD_4.2/blob/main/Logger-files/).
 These results correspond to line graph in [`GameLineGraph.png`](https://github.com/jukent/OOAD_4.2/blob/main/GameLineGraph.png).
 
 
@@ -84,7 +84,7 @@ In the [`pom.xml`](https://github.com/jukent/OOAD_4.2/blob/main/pom.xml) file yo
 
 We ran 21 tests of movement, fighting, and treasure hunting.
 
-A screenshot of the passing tests in the Visual Studio Code Maven test suite is attached in (`passing_test.png`)[https://github.com/jukent/OOAD_4.2/blob/main/passing_tests.png].
+A screenshot of the passing tests in the Visual Studio Code Maven test suite is attached in [`passing_test.png`](https://github.com/jukent/OOAD_4.2/blob/main/passing_tests.png).
 
 
 ## Java-based Line Graph
