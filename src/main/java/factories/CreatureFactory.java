@@ -5,10 +5,21 @@ import dungeon.Dungeon;
 
 public abstract class CreatureFactory extends Factory {
 
-    public CreatureFactory(Dungeon dungeonRef){
+
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Creature Factory constructor.
+     */
+    public CreatureFactory(final Dungeon dungeonRef) {
         super(dungeonRef);
     }
 
-    public abstract Creature spawnCreature();
 
+    /**
+     * @return Creature
+     *
+     * Abstract method to spawn Creatures.
+     */
+    public abstract Creature spawnCreature();
 }

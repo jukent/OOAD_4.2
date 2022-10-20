@@ -6,8 +6,14 @@ public abstract class Factory {
 
     int id = 0;
     Dungeon dungeon;
- 
-    Factory(Dungeon vDungeon){
+
+
+    /**
+     * @param vDungeon Dungeon
+     *
+     * Constructor for the factory.
+     */
+    Factory(Dungeon vDungeon) {
         this.dungeon = vDungeon;
     }
 }

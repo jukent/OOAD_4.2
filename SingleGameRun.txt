@@ -1,0 +1,108 @@
+Starting Game!
+Welcome to Raiders of the Lost Arctangent
+You are a brave adventurer about to explore a dungeon that contains numerous perils.
+Once you have found the 6 treasures (Armor, Gem, Portal, Potion, Sword, and Trap) or defeated all of the creatures, you may leave victorious!
+If you leave the dungeon too soon, you will be branded a coward and a loser.
+Are you brave enough?
+Press Enter To Continue...
+Enter your character type (Brawler, Thief, Sneaker, Runner): 
+Enter your name: 
+
+Game Status:  Round: 1 Characters: 1 Creatures: 12 Treasures Collected: 0
+(0-1-1)  :  Julia   :  
+(1-0-0)  :    :                           (1-0-1)  :    :           (1-0-2)  :    :                                   
+(1-1-0)  :    :                           (1-1-1)  :    :           (1-1-2)  :    :                                   
+(1-2-0)  :    :                           (1-2-1)  :    :           (1-2-2)  :    :                                   
+(2-0-0)  :    :                           (2-0-1)  :    :           (2-0-2)  :    :                                   
+(2-1-0)  :    :                           (2-1-1)  :    :           (2-1-2)  :    :                                   
+(2-2-0)  :    :                           (2-2-1)  :    :           (2-2-2)  :    :                                   
+(3-0-0)  :    :                           (3-0-1)  :    :           (3-0-2)  :    :                                   
+(3-1-0)  :    :                           (3-1-1)  :    :           (3-1-2)  :    :                                   
+(3-2-0)  :    :                           (3-2-1)  :    :           (3-2-2)  :    :                                   
+(4-0-0)  :    :  Blinker Blinker Blinker  (4-0-1)  :    :  Blinker  (4-0-2)  :    :  Blinker Blinker Blinker Blinker  
+(4-1-0)  :    :  Blinker                  (4-1-1)  :    :           (4-1-2)  :    :  Blinker Blinker Blinker          
+(4-2-0)  :    :                           (4-2-1)  :    :           (4-2-2)  :    :                                   
+
+Adventurers	Class	Health	Treasure
+Julia		Brawler	12	
+
+Orbiter(s) - 0 Remaining
+Seeker(s) - 0 Remaining
+Blinker(s) - 12 Remaining
+
+--------------------------------------------
+
+New Turn
+
+Brawler options: 
+1: Enter
+Your choice: 
+Movement Options:
+1: Down
+Select a direction: Julia moved to room (1-1-1)
+Move Count
+1
+
+Brawler options: 
+1: Search for Treasure
+2: PARTY!!!!
+3: End Turn
+Your choice: Julia Treasure Hunt: 3 Fail :(
+
+Brawler options: 
+1: PARTY!!!!
+2: End Turn
+Your choice: Spin! Dance! Jump! Shout! 
+
+Brawler options: 
+1: PARTY!!!!
+2: End Turn
+Your choice: Turn ended.
+
+--------------------------------------------
+
+Creature Turn
+Fight: Julia: 12 Blinker: 5 Julia Wins :D 
+Julia celebrates!: Dance! Dance! 
+Turn ended.
+
+Game Status:  Round: 2 Characters: 1 Creatures: 11 Treasures Collected: 0
+(0-1-1)  :    :  
+(1-0-0)  :    :  Blinker          (1-0-1)  :          :           (1-0-2)  :    :           
+(1-1-0)  :    :                   (1-1-1)  :  Julia   :           (1-1-2)  :    :           
+(1-2-0)  :    :  Blinker          (1-2-1)  :          :           (1-2-2)  :    :           
+(2-0-0)  :    :  Blinker          (2-0-1)  :          :  Blinker  (2-0-2)  :    :           
+(2-1-0)  :    :                   (2-1-1)  :          :  Blinker  (2-1-2)  :    :           
+(2-2-0)  :    :                   (2-2-1)  :          :           (2-2-2)  :    :           
+(3-0-0)  :    :                   (3-0-1)  :          :           (3-0-2)  :    :           
+(3-1-0)  :    :                   (3-1-1)  :          :           (3-1-2)  :    :           
+(3-2-0)  :    :                   (3-2-1)  :          :           (3-2-2)  :    :           
+(4-0-0)  :    :                   (4-0-1)  :          :           (4-0-2)  :    :  Blinker  
+(4-1-0)  :    :  Blinker          (4-1-1)  :          :  Blinker  (4-1-2)  :    :           
+(4-2-0)  :    :  Blinker Blinker  (4-2-1)  :          :  Blinker  (4-2-2)  :    :           
+
+Adventurers	Class	Health	Treasure
+Julia		Brawler	12	
+
+Orbiter(s) - 0 Remaining
+Seeker(s) - 0 Remaining
+Blinker(s) - 11 Remaining
+
+--------------------------------------------
+
+New Turn
+
+Brawler options: 
+1: Search for Treasure
+2: Move
+3: PARTY!!!!
+4: End Turn
+Your choice: 
+Movement Options:
+1: North
+2: South
+3: East
+4: West
+5: Down
+6: Exit
+Select a direction: 

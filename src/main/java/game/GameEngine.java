@@ -338,15 +338,10 @@ public class GameEngine {
     /**
      * @param character Character
      *
-     * This method processes the decision making for one Character:
-     * - If a Creature is in the Room, it automatically fights.
-     * - If no other Creature is in the Room, the Character randomly moves.
-     * - In new Room, the Character
-     *      searches for treasure if there are no Creatures
-     *      or fights if there are Creatures.
+     * This method processes the decision making for one Character
+     * via user input commands.
      */
     private void process1Character(final Character character) {
-        // Process turn counts for characters. Mostly 1 but runners have 2
         controller.controlSequence();
     }
 
