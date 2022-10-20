@@ -5,15 +5,23 @@ import entity.Character;
 import dungeon.Dungeon;
 
 public class RunnerFactory extends CharacterFactory {
-    
+
+
     //Factory Pattern Subclasses
-    public RunnerFactory(Dungeon dungeonRef){
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Constructor for the Runner factory.
+     */
+    public RunnerFactory(final Dungeon dungeonRef) {
         super(dungeonRef);
     }
 
-    public Character spawnCharacter(String Name){
-        return new Runner(this.id, this.dungeon,Name);
+
+    /* (non-Javadoc)
+     * @see factories.CharacterFactory#spawnCharacter(java.lang.String)
+     */
+    public Character spawnCharacter(String name) {
+        return new Runner(this.id, this.dungeon, name);
     }
-
-
 }

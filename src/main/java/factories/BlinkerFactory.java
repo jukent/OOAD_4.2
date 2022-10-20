@@ -3,14 +3,24 @@ package factories;
 import entity.*;
 import dungeon.Dungeon;
 
-public class BlinkerFactory extends CreatureFactory{
-   
+public class BlinkerFactory extends CreatureFactory {
+
+
     //Factory Pattern Subclasses
-    public BlinkerFactory(Dungeon dungeonRef){
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Constructor for the Blinker factory.
+     */
+     public BlinkerFactory(final Dungeon dungeonRef){
         super(dungeonRef);
     }
 
-    public Creature spawnCreature(){
+
+    /* (non-Javadoc)
+     * @see factories.CreatureFactory#spawnCreature()
+     */
+    public Creature spawnCreature() {
         return new Blinker(this.id, this.dungeon);
     }
 }

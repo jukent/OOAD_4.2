@@ -5,15 +5,23 @@ import entity.Character;
 import dungeon.Dungeon;
 
 public class SneakerFactory extends CharacterFactory {
+
     
     //Factory Pattern Subclasses
-    public SneakerFactory(Dungeon dungeonRef){
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Constructor for the Sneaker factory.
+     */
+    public SneakerFactory(final Dungeon dungeonRef){
         super(dungeonRef);
     }
 
-    public Character spawnCharacter(String Name){
-        return new Sneaker(this.id, this.dungeon,Name);
+
+    /* (non-Javadoc)
+     * @see factories.CharacterFactory#spawnCharacter(java.lang.String)
+     */
+    public Character spawnCharacter(String name) {
+        return new Sneaker(this.id, this.dungeon, name);
     }
-
-
 }

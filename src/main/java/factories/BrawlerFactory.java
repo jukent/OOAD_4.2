@@ -5,14 +5,24 @@ import entity.Character;
 import dungeon.Dungeon;
 
 public class BrawlerFactory extends CharacterFactory {
-    
+
+
+
     //Factory Pattern Subclasses
-    public BrawlerFactory(Dungeon dungeonRef){
+    /**
+     * @param dungeonRef Dungeon
+     *
+     * Constructor for the Brawler factory.
+     */
+     public BrawlerFactory(final Dungeon dungeonRef) {
         super(dungeonRef);
     }
 
-    public Character spawnCharacter(String Name){
-        return new Brawler(this.id, this.dungeon,Name);
-    }
 
+    /* (non-Javadoc)
+     * @see factories.CharacterFactory#spawnCharacter(java.lang.String)
+     */
+    public Character spawnCharacter(String name) {
+        return new Brawler(this.id, this.dungeon, name);
+    }
 }
