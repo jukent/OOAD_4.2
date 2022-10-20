@@ -53,9 +53,9 @@ public class FactoryFacade {
             case ORBITER:
                 return OrbiterFact.spawnCreature();
             case SEEKER:
-                return OrbiterFact.spawnCreature();
+                return SeekerFact.spawnCreature();
             case BLINKER:
-                return OrbiterFact.spawnCreature();
+                return BlinkerFact.spawnCreature();
             default:
                 return BlinkerFact.spawnCreature();
         }
