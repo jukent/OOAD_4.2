@@ -6,6 +6,7 @@ import dungeon.Dungeon;
 
 public class ThiefFactory extends CharacterFactory {
     
+    //Factory Pattern Subclasses
     public ThiefFactory(Dungeon dungeonRef){
         super(dungeonRef);
     }

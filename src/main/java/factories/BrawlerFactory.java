@@ -6,6 +6,7 @@ import dungeon.Dungeon;
 
 public class BrawlerFactory extends CharacterFactory {
     
+    //Factory Pattern Subclasses
     public BrawlerFactory(Dungeon dungeonRef){
         super(dungeonRef);
     }

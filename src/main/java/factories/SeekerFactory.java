@@ -6,6 +6,7 @@ import dungeon.Dungeon;
 
 public class SeekerFactory extends CreatureFactory{
        
+    //Factory Pattern Subclasses
     public SeekerFactory(Dungeon dungeonRef){
         super(dungeonRef);
     }

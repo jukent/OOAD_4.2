@@ -6,6 +6,7 @@ import dungeon.Dungeon;
 
 public class OrbiterFactory extends CreatureFactory{
        
+    //Factory Pattern Subclasses
     public OrbiterFactory(Dungeon dungeonRef){
         super(dungeonRef);
     }

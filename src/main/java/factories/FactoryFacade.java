@@ -19,7 +19,7 @@ public class FactoryFacade {
     CharacterFactory SneakerFact;
     Dungeon dungeonRef;
 
-
+    //Facade pattern to interact with complicated factories
     public FactoryFacade(Dungeon dungeon){
         dungeonRef = dungeon;
         BlinkerFact = new BlinkerFactory(dungeon);

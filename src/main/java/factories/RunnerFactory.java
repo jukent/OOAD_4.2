@@ -6,6 +6,7 @@ import dungeon.Dungeon;
 
 public class RunnerFactory extends CharacterFactory {
     
+    //Factory Pattern Subclasses
     public RunnerFactory(Dungeon dungeonRef){
         super(dungeonRef);
     }

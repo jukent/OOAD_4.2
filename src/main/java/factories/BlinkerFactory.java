@@ -5,6 +5,7 @@ import dungeon.Dungeon;
 
 public class BlinkerFactory extends CreatureFactory{
    
+    //Factory Pattern Subclasses
     public BlinkerFactory(Dungeon dungeonRef){
         super(dungeonRef);
     }
