@@ -12,6 +12,7 @@ public abstract class Command {
      * @param gameRef GameEngine
      *
      * Constructor for a Command.
+     * This is the beggining of the Command Pattern
      */
     Command(final Character characterRef, final GameEngine gameRef) {
         this.characterRef = characterRef;

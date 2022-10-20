@@ -12,6 +12,6 @@ public class OrbiterFactory extends CreatureFactory{
     }
 
     public Creature spawnCreature(){
-        return new Blinker(this.id, this.dungeon);
+        return new Orbiter(this.id, this.dungeon);
     }
 }

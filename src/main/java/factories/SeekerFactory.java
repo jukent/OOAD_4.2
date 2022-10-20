@@ -12,6 +12,6 @@ public class SeekerFactory extends CreatureFactory{
     }
 
     public Creature spawnCreature(){
-        return new Blinker(this.id, this.dungeon);
+        return new Seeker(this.id, this.dungeon);
     }
 }
