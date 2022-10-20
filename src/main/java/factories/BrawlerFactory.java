@@ -7,12 +7,14 @@ import dungeon.Dungeon;
 public class BrawlerFactory extends CharacterFactory {
 
 
+
+    //Factory Pattern Subclasses
     /**
      * @param dungeonRef Dungeon
      *
      * Constructor for the Brawler factory.
      */
-    public BrawlerFactory(final Dungeon dungeonRef) {
+     public BrawlerFactory(final Dungeon dungeonRef) {
         super(dungeonRef);
     }
 

@@ -1,0 +1,17 @@
+Tracker: Turn 5
+
+Adventurers	Room	Damage	Treasure
+Brawler		(1-2-0)	2		Sword
+
+Total Active Creatures: 9
+
+Creatures	Room
+Orbiter		(1-2-2)
+Seeker		(4-0-1)
+Blinker		(4-1-2)
+Orbiter		(1-0-1)
+Blinker		(1-0-1)
+Orbiter		(4-0-2)
+Seeker		(3-0-0)
+Blinker		(2-0-2)
+Orbiter		(1-2-1)

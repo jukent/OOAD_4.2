@@ -7,6 +7,7 @@ import dungeon.Dungeon;
 public class SeekerFactory extends CreatureFactory {
 
 
+    //Factory Pattern Subclasses
     /**
      * @param dungeonRef Dungeon
      *
@@ -21,6 +22,6 @@ public class SeekerFactory extends CreatureFactory {
      * @see factories.CreatureFactory#spawnCreature()
      */
     public Creature spawnCreature() {
-        return new Blinker(this.id, this.dungeon);
+        return new Seeker(this.id, this.dungeon);
     }
 }

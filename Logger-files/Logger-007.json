@@ -1,0 +1,18 @@
+{
+  "Creatures": {
+    "Seeker": "(4-2-1)",
+    "Blinker": "(3-0-2)",
+    "Remaining": 9,
+    "Orbiter": "(1-2-1)"
+  },
+  "Character": {
+    "Treasure": [
+      "Armor"
+    ],
+    "Type": "Thief",
+    "Health": 9,
+    "Name": "Chadina",
+    "Location": "(2-1-0)"
+  },
+  "Turn": 7
+}

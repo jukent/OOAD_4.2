@@ -7,6 +7,7 @@ import dungeon.Dungeon;
 public class OrbiterFactory extends CreatureFactory {
 
 
+    //Factory Pattern Subclasses
     /**
      * @param dungeonRef Dungeon
      *
@@ -20,7 +21,7 @@ public class OrbiterFactory extends CreatureFactory {
     /* (non-Javadoc)
      * @see factories.CreatureFactory#spawnCreature()
      */
-    public Creature spawnCreature() {
-        return new Blinker(this.id, this.dungeon);
+    public Creature spawnCreature(){
+        return new Orbiter(this.id, this.dungeon);
     }
 }

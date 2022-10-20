@@ -6,7 +6,8 @@ import dungeon.Dungeon;
 
 public class ThiefFactory extends CharacterFactory {
 
-
+    
+    //Factory Pattern Subclasses
     /**
      * @param dungeonRef Dungeon
      *

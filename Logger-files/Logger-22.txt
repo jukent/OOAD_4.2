@@ -1,0 +1,17 @@
+Tracker: Turn 22
+
+Adventurers	Room	Damage	Treasure
+Brawler		(1-2-1)	0		Gem, Armor
+
+Total Active Creatures: 9
+
+Creatures	Room
+Blinker		(2-0-2)
+Seeker		(3-1-1)
+Orbiter		(4-0-0)
+Seeker		(4-1-0)
+Orbiter		(3-2-2)
+Seeker		(2-2-1)
+Blinker		(2-0-1)
+Orbiter		(3-2-1)
+Seeker		(2-1-0)

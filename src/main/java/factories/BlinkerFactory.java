@@ -6,12 +6,13 @@ import dungeon.Dungeon;
 public class BlinkerFactory extends CreatureFactory {
 
 
+    //Factory Pattern Subclasses
     /**
      * @param dungeonRef Dungeon
      *
      * Constructor for the Blinker factory.
      */
-    public BlinkerFactory(final Dungeon dungeonRef) {
+     public BlinkerFactory(final Dungeon dungeonRef){
         super(dungeonRef);
     }
 

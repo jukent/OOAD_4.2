@@ -6,6 +6,7 @@ import dungeon.Dungeon;
 public abstract class CreatureFactory extends Factory {
 
 
+    //Factory pattern abstract class
     /**
      * @param dungeonRef Dungeon
      *

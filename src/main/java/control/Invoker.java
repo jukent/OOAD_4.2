@@ -24,6 +24,8 @@ public class Invoker {
      * @param gameRef Game Engine
      *
      * Constructor for the Command Invoker.
+     * This is where the invoker orders the game engine or character
+     * to perform certian actions
      */
     public Invoker(final Character characterRef, final GameEngine gameRef) {
         this.characterRef = characterRef;

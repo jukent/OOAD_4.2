@@ -20,13 +20,13 @@ public class FactoryFacade {
     Dungeon dungeonRef;
 
 
-
+    //Facade pattern to interact with complicated factories
     /**
      * @param dungeon Dungeon
      *
      * Facade for the factories.
      */
-    public FactoryFacade(Dungeon dungeon) {
+    public FactoryFacade(Dungeon dungeon){
         dungeonRef = dungeon;
         BlinkerFact = new BlinkerFactory(dungeon);
         SeekerFact = new SeekerFactory(dungeon);

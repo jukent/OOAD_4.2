@@ -6,12 +6,13 @@ import dungeon.Dungeon;
 public abstract class CharacterFactory extends Factory {
 
 
+    //Factory pattern abstract class
     /**
      * @param dungeonRef Dungeon
      *
      * Constructor for the Character factory.
      */
-    public CharacterFactory(Dungeon dungeonRef) {
+    public CharacterFactory(final Dungeon dungeonRef) {
         super(dungeonRef);
     }
 
