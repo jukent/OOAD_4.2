@@ -8,6 +8,7 @@ import control.Invoker;
 import dungeon.*;
 import entity.*;
 import entity.Character;
+import factories.FactoryFacade;
 import fight.FightBehavior;
 import treasure.*;
 import movement.BlinkMovement;
@@ -32,8 +33,7 @@ public class GameEngine {
     private ArrayList<Character> characterList = new ArrayList<Character>();
     private ArrayList<Creature> creatureList = new ArrayList<Creature>();
     private ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
-    private CharacterFactory playerFactory = new CharacterFactory(dungeon);
-    private CreatureFactory enemyFactory = new CreatureFactory(dungeon);
+    private FactoryFacade EntitySpawner = new FactoryFacade(this.dungeon);
     private Invoker controller;
 
     public final Tracker tracker = Tracker.getInstance(); // Game Tracker
@@ -92,7 +92,7 @@ public class GameEngine {
         // but the ArrayList is made of an abstract class
         // All Characters or Creatures behave as the instance
         // of their abstract class.
-        EntityEnum type = EntityEnum.NULL;
+        CharacterEnum type = CharacterEnum.BRAWLER;
         int id = 0; // Object ID value
         boolean nameVal = true;
         String name = new String();
@@ -101,16 +101,16 @@ public class GameEngine {
                 + "(Brawler, Thief, Sneaker, Runner): ");
             String stringtype = scanner.nextLine().toUpperCase();
             if (stringtype.equals("BRAWLER")) {
-                type = EntityEnum.BRAWLER;
+                type = CharacterEnum.BRAWLER;
                 nameVal = false;
             } else if (stringtype.equals("THIEF")) {
-                type = EntityEnum.THIEF;
+                type = CharacterEnum.THIEF;
                 nameVal = false;
             } else if (stringtype.equals("SNEAKER")) {
-                type = EntityEnum.SNEAKER;
+                type = CharacterEnum.SNEAKER;
                 nameVal = false;
             } else if (stringtype.equals("RUNNER")) {
-                type = EntityEnum.RUNNER;
+                type = CharacterEnum.RUNNER;
                 nameVal = false;
             } else {
                 System.out.println("Try again");
@@ -122,7 +122,7 @@ public class GameEngine {
         }
 
         // Characters
-        Character newPlayer = playerFactory.createEntity(type, name);
+        Character newPlayer = EntitySpawner.spawnCharacter(type, name);
         characterList.add(newPlayer);
         controller = new Invoker(newPlayer, this);
         // publish initial Character stats to Tracker
@@ -132,7 +132,7 @@ public class GameEngine {
 
         // Creatures
         // Also an example of polymorphism
-        creatureList = enemyFactory.entitySet(4);
+        creatureList = EntitySpawner.spawnCreatureSet(4);
         // publish initial Creature stats to Tracker
         tracker.setCreatureStats(creatureList);
         // Again, example of Observer pattern.
