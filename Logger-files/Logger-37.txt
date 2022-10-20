@@ -1,0 +1,12 @@
+Tracker: Turn 37
+
+Adventurers	Room	Damage	Treasure
+Brawler		(1-2-1)	1		Gem, Armor, Portal
+
+Total Active Creatures: 4
+
+Creatures	Room
+Orbiter		(4-2-0)
+Orbiter		(3-0-2)
+Blinker		(4-2-0)
+Orbiter		(3-2-2)

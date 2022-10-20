@@ -1,0 +1,8 @@
+Tracker: Turn 46
+
+Adventurers	Room	Damage	Treasure
+
+Total Active Creatures: 1
+
+Creatures	Room
+Orbiter		(3-0-2)
